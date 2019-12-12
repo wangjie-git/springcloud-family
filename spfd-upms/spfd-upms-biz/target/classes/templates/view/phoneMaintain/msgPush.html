@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>消息通知</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="import" href="../common.html" id="common">
+<style>
+body {
+	overflow-y: scroll;
+}
+body .layui-tree-skin-shihuang .layui-tree-branch{
+	border-radius:20% 20%;
+	color: #EDCA50;
+	background-color: #EDCA61;
+}
+.layui-tree-white{
+	border-radius:20% 20%;
+	background-color: #fff;
+}
+</style>
+</head>
+<body>
+	<div class="layui-fluid">
+		<div class="layui-row layui-col-space15">
+			<div class="layui-col-md12">
+				<div class="layui-row layui-col-space15">
+					<div class="layui-col-md12">
+						<div class="layui-card">
+							<div class="layui-card-header">消息通知</div>
+							<div class="layui-card-body">
+								<form class="layui-form search-form" lay-filter="form" id="form"
+									action="">
+									<div class="layui-form-item">
+							    		<div class="layui-inline">
+											<label class="layui-form-label">消息类型：</label>
+											<div class="layui-input-inline" style="width: 140px;">
+												<select  class="dataFrom_select" id="noticeType" name="noticeType">
+													<option value="">请选择</option>
+							        				<option value="1">本周待履约</option>
+							        				<option value="2">即将过期居民</option>
+							        				<option value="99">系统消息</option>
+												</select>
+											</div>
+										</div>
+
+										<!-- <div class="layui-inline">
+											<label class="layui-form-label">创建人：</label>
+											<div class="layui-input-inline" style="width: 140px;">
+												<input type="text" name="personName" id="personName"
+													autocomplete="off" class="layui-input">
+											</div>
+										</div> -->
+
+										<div class="layui-inline">
+											<div class="layui-input-inline" style="width: 280px;">
+												<button type="button" class="layui-btn"
+													data-type="reload">筛选</button>
+												<button type="reset" class="layui-btn ">清空查询条件</button>
+											</div>
+										</div>
+										<div class="search-form" style="margin-top: 10px;margin-bottom: 10px;margin-left: 25px;">
+                                			<a class="layui-btn layui-btn-primary layui-btn-sm" data-type="add">新增消息</a>
+                                			<a class="layui-btn layui-btn-primary layui-btn-sm" data-type="end">禁用</a>
+                           				</div>
+									</div>
+								</form>
+								<table class="layui-table" id="noticInfo_table"
+									lay-filter="noticInfo_table"></table>
+
+							<script type="text/html" id="test-table-team-barDemo">
+                                <a class="layui-btn layui-btn-success layui-btn-xs" lay-event="detail">查看详情</a>
+                            </script>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="../../public/view_js/phoneMaintain/noticeIndex.js"></script>
+</body>
+</html>

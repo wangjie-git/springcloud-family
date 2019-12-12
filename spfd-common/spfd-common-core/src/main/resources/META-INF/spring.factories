@@ -1,0 +1,7 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.ks.spfd.common.core.config.JacksonConfig,\
+  com.ks.spfd.common.core.config.RedisConfig,\
+  com.ks.spfd.common.core.config.RestTemplateConfig,\
+  com.ks.spfd.common.core.config.FilterIgnorePropertiesConfig,\
+  com.ks.spfd.common.core.exception.GlobalExceptionHandler,\
+  com.ks.spfd.common.core.util.SpringContextHolder

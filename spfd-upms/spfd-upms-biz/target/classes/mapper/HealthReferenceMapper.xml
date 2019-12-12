@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ks.spfd.admin.mapper.HealthReferenceMapper">
+
+  <resultMap id="healthReferenceMap" type="com.ks.spfd.admin.api.entity.HealthReference">
+                  <id property="fid" column="FID"/>
+                        <result property="fcode" column="FCODE"/>
+                        <result property="fminValue" column="FMIN_VALUE"/>
+                        <result property="fmaxValue" column="FMAX_VALUE"/>
+                        <result property="funit" column="FUNIT"/>
+                        <result property="fversion" column="FVERSION"/>
+                        <result property="flogcby" column="FLOGCBY"/>
+                        <result property="flogcdate" column="FLOGCDATE"/>
+                        <result property="flogluby" column="FLOGLUBY"/>
+                        <result property="flogludate" column="FLOGLUDATE"/>
+                        <result property="floglaby" column="FLOGLABY"/>
+                        <result property="flogladate" column="FLOGLADATE"/>
+                        <result property="fdesc" column="FDESC"/>
+                        <result property="fvalue" column="FVALUE"/>
+            </resultMap>
+
+  <!--healthReference简单分页查询-->
+  <select id="getHealthReferencePage" resultMap="healthReferenceMap">
+    SELECT
+                  FID,
+                        FCODE,
+                        FMIN_VALUE,
+                        FMAX_VALUE,
+                        FUNIT,
+                        FVERSION,
+                        FLOGCBY,
+                        FLOGCDATE,
+                        FLOGLUBY,
+                        FLOGLUDATE,
+                        FLOGLABY,
+                        FLOGLADATE,
+                        FDESC,
+                        FVALUE
+              FROM p_health_reference
+    <where>
+              <if test="healthReference.fid != null and healthReference.fid.trim() != ''">
+          AND FID = #{healthReference.fid}
+        </if>
+              <if test="healthReference.fcode != null and healthReference.fcode.trim() != ''">
+          AND FCODE = #{healthReference.fcode}
+        </if>
+              <if test="healthReference.fminValue != null and healthReference.fminValue.trim() != ''">
+          AND FMIN_VALUE = #{healthReference.fminValue}
+        </if>
+              <if test="healthReference.fmaxValue != null and healthReference.fmaxValue.trim() != ''">
+          AND FMAX_VALUE = #{healthReference.fmaxValue}
+        </if>
+              <if test="healthReference.funit != null and healthReference.funit.trim() != ''">
+          AND FUNIT = #{healthReference.funit}
+        </if>
+              <if test="healthReference.fversion != null and healthReference.fversion.trim() != ''">
+          AND FVERSION = #{healthReference.fversion}
+        </if>
+              <if test="healthReference.flogcby != null and healthReference.flogcby.trim() != ''">
+          AND FLOGCBY = #{healthReference.flogcby}
+        </if>
+              <if test="healthReference.flogcdate != null and healthReference.flogcdate.trim() != ''">
+          AND FLOGCDATE = #{healthReference.flogcdate}
+        </if>
+              <if test="healthReference.flogluby != null and healthReference.flogluby.trim() != ''">
+          AND FLOGLUBY = #{healthReference.flogluby}
+        </if>
+              <if test="healthReference.flogludate != null and healthReference.flogludate.trim() != ''">
+          AND FLOGLUDATE = #{healthReference.flogludate}
+        </if>
+              <if test="healthReference.floglaby != null and healthReference.floglaby.trim() != ''">
+          AND FLOGLABY = #{healthReference.floglaby}
+        </if>
+              <if test="healthReference.flogladate != null and healthReference.flogladate.trim() != ''">
+          AND FLOGLADATE = #{healthReference.flogladate}
+        </if>
+              <if test="healthReference.fdesc != null and healthReference.fdesc.trim() != ''">
+          AND FDESC = #{healthReference.fdesc}
+        </if>
+              <if test="healthReference.fvalue != null and healthReference.fvalue.trim() != ''">
+          AND FVALUE = #{healthReference.fvalue}
+        </if>
+          </where>
+  </select>
+
+
+
+</mapper>

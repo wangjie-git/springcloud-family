@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>居民信息管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+    <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+    <link rel="import" href="/common.html" id="common">
+  <!--   <script type="text/javascript" src="/view_js/console.js"></script> -->
+    <style>
+        body{overflow-y: scroll;}
+        .divCe{
+        	margin: auto;
+    		top: 0;
+    		left: 0;
+    		bottom: 0;
+    		right: 0;
+        }
+        .spanCe1{
+        	text-align:center;display:block;position: relative;top:50%;font-size: 24px;color: #498ae8;
+        }
+        .spanCe2{
+        	text-align:center;display:block;position: relative;top:50%;font-size: 16px;font-family: sans-serif;
+        }
+
+    </style>
+</head>
+<body>
+<div class="layui-fluid">
+    <div class="layui-row layui-col-space15">
+        <div class="layui-col-md12">
+            <div class="layui-row layui-col-space15">
+                <div class="layui-col-md12">
+                    <div class="layui-card">
+                    <img alt="" src="/images/bg_home.png" width="100%" height="100%">
+                    		<div class="divCe" style="position: absolute;width: 70%;height: 50%;margin-top: 3%;">
+                    			<div class="divCe" style="font-family: sans-serif;"><span class="spanCe1" id="home_welcome_empName"></span></div>
+                    			<div class="divCe" style="font-family: sans-serif;line-height: 30px;margin-bottom:8px "><span class="spanCe1">欢迎进入康尚家庭医生服务平台~</span></div>
+                    			<div class="divCe" style="font-family: sans-serif;line-height: 24px;"><span class="spanCe2" style="color:#1c9af3;">【上次登入时间】</span></div>
+                    			<div><span class="spanCe2" id="home_lastLoginTime" style="margin-bottom:10px"></span></div>
+                    			<div class="divCe" style="font-family: sans-serif;line-height: 24px;"><span class="spanCe2" style="color:#1c9af3;">【隶属机构】</span></div>
+                    			<div><span class="spanCe2" id="home_orgName" style="margin-bottom:10px"></span></div>
+                    			<div class="divCe" style="font-family:sans-serif;line-height: 24px;"><span class="spanCe2" style="color:#1c9af3;">【版本信息】</span></div>
+                    			<div><span class="spanCe2" id="home_version" style="margin-bottom:10px"></span></div>
+                    			<div class="divCe" style="font-family: sans-serif;line-height: 24px;"><span class="spanCe2" style="color:#1c9af3;">【所属团队】</span></div>
+                    			<div><span class="spanCe2" id="home_teamInfo"></span></div>
+                    		</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

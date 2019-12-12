@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>新增</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+	<link rel="import" href="../common.html" id="common">
+	<script charset="utf-8" src="../../public/kindeditor/kindeditor-all.js"></script>
+  	<script charset="utf-8" src="../../public//kindeditor/lang/zh-CN.js"></script>
+</head>
+<body>
+  <div class="layui-container">
+    <div class="layui-row layui-col-space15 mt75">
+      <div class="layui-col-md12 layui-form">
+        <div class="tablehead">
+          <div class="layui-row">
+
+            <div class="layui-col-xs6 layui-col-md12 txtr">
+              <a href="../protocol/index.html"  class="layui-btn layui-btn-primary layui-btn-sm">返回</a>
+              <a class="layui-btn layui-btn-sm"  lay-submit lay-filter="formDemo">保存</a>
+            </div>
+          </div>
+        </div>
+        <div class="bodytable" id="protocalTable"></div>
+      </div>
+    </div>
+  </div>
+
+
+</body>
+</html>
+  <script src="../../public/view_js/protocol/add.js"></script>
+<script id="addProtocol" type="text/html">
+
+  <div class="bodytable">
+    <table class="layui-table">
+      <tbody>
+      <tr>
+        <td colspan="2">协议标题  <font color='red'>*</font></td>
+        <td colspan="8"> <input type="text" name="protocoltitle" id="protocoltitle" lay-verify="required|length" length="64" placeholder="" autocomplete="off" {{isreadonly(d.protocoltitle)}} class="layui-input " style="width: 600px;" value="{{isundefined(d.protocoltitle)}}" >
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">机构  <font color='red'>*</font></td>
+        <td colspan="8"> <!--<input type="text" name="contentorgname"  placeholder="" autocomplete="off" class="layui-input " style="width: 600px;" value="{{isundefined(d.contentorgname)}}" >-->
+
+			<div class="layui-input-block" style="margin-left:0px;">
+				<div id="tree_select" class="layui-unselect layui-form-select">
+					<div class="layui-select-title" id="open_select">
+						<input type="text" id="contentorgname" value="{{isundefined(d.contentorgname)}}" lay-verify="required" name="contentorgname" placeholder="请选择" readonly="" class="layui-input layui-unselect layui-form-selected">
+						<input type="text" id="orgId" value="{{isundefined(d.orgId)}}" name="orgId" placeholder="请选择" value="" readonly="" class="layui-hide">
+						<input type="text" id="orgRsId" value="{{isundefined(d.orgRsId)}}" name="orgRsId" placeholder="请选择" value="" readonly="" class="layui-hide">
+						<i class="layui-edge"></i>
+					</div>
+					<dl class="layui-anim layui-anim-upbit " id="demo" style="">
+					</dl>
+				</div>
+			</div>
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">团队是否为甲方<font color='red'>*</font></td>
+        <td colspan="8">
+          <input type="radio" lay-verify="radio" name="isabparty" text="团队是否为甲方" value="0"  checked="checked" {{ischecked(d.isabparty,0)}} title="是">
+          <input type="radio" lay-verify="radio" name="isabparty" text="团队是否为甲方" value="1" {{ischecked(d.isabparty,1)}} title="否">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">协议类型  <font color='red'>*</font></td>
+        <td colspan="8">
+          <div style="width: 600px;">
+            <select name="protocoltype" id="protocoltype" lay-verify="required" >
+              <option value="" {{isSelected(d.protocoltype,"")}}>请选择</option>
+              <option value="0" {{isSelected(d.protocoltype,"0")}}>解约协议</option>
+              <option value="1" {{isSelected(d.protocoltype,"1")}}>续约协议</option>
+			  <option value="2" {{isSelected(d.protocoltype,"2")}}>签约协议</option>
+            </select>
+          </div>
+        </td>
+      </tr>
+	  <tr>
+        <td colspan="2">是否可用<font color='red'>*</font></td>
+        <td colspan="8">
+          <input type="radio" lay-verify="radio" name="isAvailable" text="是否可用" value="Y"  checked="checked" {{ischecked(d.isAvailable,"Y")}} title="是">
+          <input type="radio" lay-verify="radio" name="isAvailable" text="是否可用" value="N" {{ischecked(d.isAvailable,"N")}} title="否">
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">协议内容  <font color='red'>*</font>：</td>
+        <td colspan="8">
+			<!--<textarea name="content" id="content" required lay-verify="required" placeholder="请输入" class="layui-textarea" style="height: 200px;"></textarea>-->
+        	<textarea name="protocoltext" id="content" lay-verify="editor" title  placeholder="请输入" style="height: 200px;"></textarea>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</script>
+
+<style type="text/css">
+
+  .bodytable{
+      background: #fff;
+      padding: 15px 15px;
+      min-height: 20px;
+      line-height: 20px;
+      font-size: 14px;
+  }
+  .w800{
+    width: 800px;
+    margin: 0px auto;
+  }
+  .tablehead{
+    padding: 9px 30px;
+    min-height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+  }
+  .tablehead.e{
+    padding: 9px 15px;
+  }
+  .tablehead .title{
+
+    padding: 9px 15px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .tablehead b{
+    font-size: 16px;
+  }
+  .layui-table{
+    margin: 0px;
+  }
+  .hidetable{
+    position: relative;
+  }
+  .hidetable div{
+    height: 40px;
+    background: #fff;
+    margin-top: -28px;
+    position: absolute;
+    margin-left: -16px;
+    width: 101%;
+  }
+  .txtr{
+    text-align: right;
+  }
+  .txtc{
+    text-align: center;
+  }  .floatr{
+    float: right;
+  }
+  .ks-tb{
+    background: #fff;
+    padding: 9px 15px;
+    min-height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+  }
+  .ks-tb .ks-l{
+    border: solid 1px #e6e6e6;
+  }
+  .mt15{
+    margin-top: 15px;
+  }
+  .ml5{
+    margin-left: 10px;
+  }
+  .w56{
+    display: inline-block;
+    width: 56px;
+  }
+  .mt75{
+    margin-top: 7.5px;
+  }
+</style>
+<style type="text/css" >
+  /* 表单 的layui修改*/
+  .pr10{
+    padding-right: 10px;
+  }
+  .layui-form-radio {
+    padding-right: 10px;
+    margin: 0px;
+    min-height: 19px;
+    line-height: 19px;
+    font-size: 14px;
+  }
+  .layui-form-radio>i{
+    margin-right: 3px;
+    font-size: 20px;
+  }
+  .layui-form-checkbox span{
+    padding-left: 3px;
+  }
+  .layui-form-checkbox[lay-skin=primary] span{
+    padding-right: 10px;
+  }
+  td label{
+    padding-right: 10px;
+  }
+  .layui-form-label{
+    padding: 0px;
+    width: auto;
+    line-height: 30px;
+  }
+  .layui-form-item {
+    margin-bottom: 0px;
+  }
+  .layui-input{
+    height: 30px;
+  }
+  .layui-input-block{
+    min-height: 30px;
+    margin-left: 40px;
+  }
+  .ml56{
+    margin-left: 66px;
+  }
+  .mr5{
+    margin-right: 5px;
+  }
+  .mr10{
+    margin-right: 10px;
+  }
+  .mr15{
+    margin-right: 15px;
+  }
+  .tdu{
+    display: inline-block;
+    min-width: 20px;
+    border-bottom: solid 1px #ccc;
+  }
+  .bbs1c{
+    border-bottom: solid 1px #ccc;
+  }
+  .mp15{
+    margin: 0 -15px;
+    padding: 0 15px;
+  }
+  .fen{
+    text-align: center;
+    color: #FF5722;
+  }
+</style>

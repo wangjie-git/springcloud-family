@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
+		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>com.ks</groupId>
+		<artifactId>spfd-upms</artifactId>
+		<version>2.0.3</version>
+	</parent>
+
+	<artifactId>spfd-upms-api</artifactId>
+	<packaging>jar</packaging>
+
+	<description>spfd 通用用户权限管理系统公共api模块</description>
+
+
+	<dependencies>
+		<!--core 工具类-->
+		<dependency>
+			<groupId>com.ks</groupId>
+			<artifactId>spfd-common-core</artifactId>
+			<version>2.0.3</version>
+		</dependency>
+		<dependency>
+			<groupId>com.ks</groupId>
+			<artifactId>spfd-common-dto</artifactId>
+			<version>2.0.3</version>
+		</dependency>
+    </dependencies>
+</project>

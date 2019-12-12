@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ks.spfd.perm.base.mapper.EmloyeeMapper">
+
+  <resultMap id="emloyeeMap" type="com.ks.spfd.perm.base.entity.Emloyee">
+                  <id property="fempId" column="FEMP_ID"/>
+                        <result property="fempCode" column="FEMP_CODE"/>
+                        <result property="fstaffId" column="FSTAFF_ID"/>
+                        <result property="fempName" column="FEMP_NAME"/>
+                        <result property="forgId" column="FORG_ID"/>
+                        <result property="fidNo" column="FID_NO"/>
+                        <result property="fsexId" column="FSEX_ID"/>
+                        <result property="fdocType" column="FDOC_TYPE"/>
+                        <result property="fbirthdate" column="FBIRTHDATE"/>
+                        <result property="fisavailable" column="FISAVAILABLE"/>
+                        <result property="ftelphone" column="FTELPHONE"/>
+                        <result property="ffaxNo" column="FFAX_NO"/>
+                        <result property="femail" column="FEMAIL"/>
+                        <result property="fordernum" column="FORDERNUM"/>
+                        <result property="fempDesc" column="FEMP_DESC"/>
+                        <result property="fversion" column="FVERSION"/>
+                        <result property="flogcby" column="FLOGCBY"/>
+                        <result property="flogcdate" column="FLOGCDATE"/>
+                        <result property="flogluby" column="FLOGLUBY"/>
+                        <result property="flogludate" column="FLOGLUDATE"/>
+                        <result property="floglaby" column="FLOGLABY"/>
+                        <result property="flogladate" column="FLOGLADATE"/>
+                        <result property="fdockingTime" column="FDOCKING_TIME"/>
+                        <result property="forgrsId" column="FORGRS_ID"/>
+                        <result property="fautoMergeFlag" column="FAUTO_MERGE_FLAG"/>
+            </resultMap>
+
+  <!--emloyee简单分页查询-->
+  <select id="getEmloyeePage" resultMap="emloyeeMap">
+    SELECT
+                  FEMP_ID,
+                        FEMP_CODE,
+                        FSTAFF_ID,
+                        FEMP_NAME,
+                        FORG_ID,
+                        FID_NO,
+                        FSEX_ID,
+                        FDOC_TYPE,
+                        FBIRTHDATE,
+                        FISAVAILABLE,
+                        FTELPHONE,
+                        FFAX_NO,
+                        FEMAIL,
+                        FORDERNUM,
+                        FEMP_DESC,
+                        FVERSION,
+                        FLOGCBY,
+                        FLOGCDATE,
+                        FLOGLUBY,
+                        FLOGLUDATE,
+                        FLOGLABY,
+                        FLOGLADATE,
+                        FDOCKING_TIME,
+                        FORGRS_ID,
+                        FAUTO_MERGE_FLAG
+              FROM p_employee
+    <where>
+              <if test="emloyee.fempId != null and emloyee.fempId.trim() != ''">
+          AND FEMP_ID = #{emloyee.fempId}
+        </if>
+              <if test="emloyee.fempCode != null and emloyee.fempCode.trim() != ''">
+          AND FEMP_CODE = #{emloyee.fempCode}
+        </if>
+              <if test="emloyee.fstaffId != null and emloyee.fstaffId.trim() != ''">
+          AND FSTAFF_ID = #{emloyee.fstaffId}
+        </if>
+              <if test="emloyee.fempName != null and emloyee.fempName.trim() != ''">
+          AND FEMP_NAME = #{emloyee.fempName}
+        </if>
+              <if test="emloyee.forgId != null and emloyee.forgId.trim() != ''">
+          AND FORG_ID = #{emloyee.forgId}
+        </if>
+              <if test="emloyee.fidNo != null and emloyee.fidNo.trim() != ''">
+          AND FID_NO = #{emloyee.fidNo}
+        </if>
+              <if test="emloyee.fsexId != null and emloyee.fsexId.trim() != ''">
+          AND FSEX_ID = #{emloyee.fsexId}
+        </if>
+              <if test="emloyee.fdocType != null and emloyee.fdocType.trim() != ''">
+          AND FDOC_TYPE = #{emloyee.fdocType}
+        </if>
+              <if test="emloyee.fbirthdate != null and emloyee.fbirthdate.trim() != ''">
+          AND FBIRTHDATE = #{emloyee.fbirthdate}
+        </if>
+              <if test="emloyee.fisavailable != null and emloyee.fisavailable.trim() != ''">
+          AND FISAVAILABLE = #{emloyee.fisavailable}
+        </if>
+              <if test="emloyee.ftelphone != null and emloyee.ftelphone.trim() != ''">
+          AND FTELPHONE = #{emloyee.ftelphone}
+        </if>
+              <if test="emloyee.ffaxNo != null and emloyee.ffaxNo.trim() != ''">
+          AND FFAX_NO = #{emloyee.ffaxNo}
+        </if>
+              <if test="emloyee.femail != null and emloyee.femail.trim() != ''">
+          AND FEMAIL = #{emloyee.femail}
+        </if>
+              <if test="emloyee.fordernum != null and emloyee.fordernum.trim() != ''">
+          AND FORDERNUM = #{emloyee.fordernum}
+        </if>
+              <if test="emloyee.fempDesc != null and emloyee.fempDesc.trim() != ''">
+          AND FEMP_DESC = #{emloyee.fempDesc}
+        </if>
+              <if test="emloyee.fversion != null and emloyee.fversion.trim() != ''">
+          AND FVERSION = #{emloyee.fversion}
+        </if>
+              <if test="emloyee.flogcby != null and emloyee.flogcby.trim() != ''">
+          AND FLOGCBY = #{emloyee.flogcby}
+        </if>
+              <if test="emloyee.flogcdate != null and emloyee.flogcdate.trim() != ''">
+          AND FLOGCDATE = #{emloyee.flogcdate}
+        </if>
+              <if test="emloyee.flogluby != null and emloyee.flogluby.trim() != ''">
+          AND FLOGLUBY = #{emloyee.flogluby}
+        </if>
+              <if test="emloyee.flogludate != null and emloyee.flogludate.trim() != ''">
+          AND FLOGLUDATE = #{emloyee.flogludate}
+        </if>
+              <if test="emloyee.floglaby != null and emloyee.floglaby.trim() != ''">
+          AND FLOGLABY = #{emloyee.floglaby}
+        </if>
+              <if test="emloyee.flogladate != null and emloyee.flogladate.trim() != ''">
+          AND FLOGLADATE = #{emloyee.flogladate}
+        </if>
+              <if test="emloyee.fdockingTime != null and emloyee.fdockingTime.trim() != ''">
+          AND FDOCKING_TIME = #{emloyee.fdockingTime}
+        </if>
+              <if test="emloyee.forgrsId != null and emloyee.forgrsId.trim() != ''">
+          AND FORGRS_ID = #{emloyee.forgrsId}
+        </if>
+              <if test="emloyee.fautoMergeFlag != null and emloyee.fautoMergeFlag.trim() != ''">
+          AND FAUTO_MERGE_FLAG = #{emloyee.fautoMergeFlag}
+        </if>
+          </where>
+  </select>
+
+
+
+</mapper>

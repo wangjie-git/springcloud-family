@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>门诊详情</title>
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+  <link rel="import" href="../common.html" id="common">
+</head>
+<body>
+  <div class="layui-container">
+    <div class="layui-row layui-col-space15 mt75">
+      <div class="layui-col-md12 layui-form">
+        <div class="tablehead">
+          <div class="layui-row">
+            <div class="layui-col-xs6 layui-col-md12 txtr">
+              <a href="../outpatients/index.html"  class="layui-btn layui-btn-primary layui-btn-sm">返回</a>
+              <a href="javascript:;"  class="layui-btn layui-btn-sm layui-hide"  lay-submit lay-filter="formDemo">保存</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="bodytable" id="tablehtml"></div>
+        <div class="bodytable" id="optestdata"></div>
+        <div id="page_div" align="center"></div>
+      </div>
+    </div>
+  </div>
+  <!-- {{#  if(((istestdataval(d.flag))=='1' ||d.sex=='1'){ }}
+							<td align="center" colspan="2">身份证号</td>
+		              		<td align="center" colspan="2">{{isundefined(d.idcard)}}</td>
+					  {{#  }}} -->
+  	<script src="../../public/view_js/outpatients/detail.js"></script>
+  	<script src="../../public/js/LodopFuncs.js"></script>
+</body>
+</html>
+<script id="personTpl" type="text/html">
+<div class="tablehead title_mzxx" >门诊详情</div>
+       	 <div class="bodytable">
+		     <table class="layui-table">
+		          <tbody>
+		            <tr>
+		              <td align="center" colspan="2">姓名</td>
+		              <td align="center" colspan="2">{{isundefined(d.name)}}</td>
+		              <td align="center" colspan="2">性别</td>
+		              <td align="center" colspan="2">{{isundefined(d.sex)}}</td>
+					  {{#  if((istestdataval(d.flag))=='1'){ }}
+							<td align="center" colspan="2">身份证号</td>
+		              		<td align="center" colspan="2">{{isundefined(d.idcard)}}</td>
+					  {{#  }}}
+		              <td align="center" colspan="2">电话号码</td>
+		              <td align="center" colspan="2">{{isundefined(d.phoneNo)}}</td>
+		              <td align="center" colspan="2">机构</td>
+		              <td align="center" colspan="2">{{isundefined(d.orgName)}}</td>
+		            </tr>
+		          </tbody>
+		        </table>
+	        </div>
+</script>
+
+
+<script id="testdataTpl" type="text/html">
+<hr style="background-color: #20222a;"/>
+       	 <div class="bodytable">
+                    {{# layui.each(d.data, function(index, item){}}
+		     			<table class="layui-table" mzid_div='{{isundefined(item.testDataId)}}'>
+		          			<tbody>
+		            			<tr>
+		             				 <td align="center" colspan="2">测量时间：</td>
+					 				 <td align="center" colspan="10">{{isundefined(item.opDate)}}
+											<a mz_id='{{isundefined(item.testDataId)}}' style="float: right;" class="layui-btn layui-btn-sm print_Mzxx" >打印门诊详情</a>
+									 </td>
+		           				 </tr>
+		            			<tr>
+		             				 <td style="white-space:nowrap;overflow:hidden;word-break:keep-all;" align="center" colspan="2"><span style='text-align:center'>测量结果：</span></td>
+					 				 <td align="center" colspan="10">
+		     							<table class="layui-table">
+		            						<tr>
+		             				 			<td align="center" colspan="2">血压(90~140/60~90)：</td>
+					 				 			<td align="center" colspan="10">{{istestdataval(item.testdata.sbp)}}&nbsp;/&nbsp;{{istestdataval(item.testdata.dbp)}}&nbsp;mmHg</td>
+		           							 </tr>
+		            						<tr>
+		             				 			<td align="center" colspan="2">血氧(94~100)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.oximeter)}}&nbsp;%</td>
+		             				 			<td align="center" colspan="2">脉率(50~100)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.pulse)}}&nbsp;bpm</td>
+		           							 </tr>
+        									<tr>
+
+		             				 			<td align="center" colspan="2">血糖类型：</td>
+					 				 			<td align="center" colspan="4">{{xtlx(item.testdata.memo1)}}</td>
+		             				 			{{#  if((xtlx(item.testdata.memo1)) == '空腹血糖'){ }}
+														<td align="left" colspan="2">血糖值(3.9~6.1)：</td>
+												{{# } else { }}
+		             				 					<td align="left" colspan="2">血糖值(3.9~10.0)：</td>
+												{{#  }}}
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.glu)}}&nbsp;mmol/L</td>
+		           							 </tr>
+
+
+											<tr>
+		             				 			<td align="center" colspan="2">总胆固醇(0.0~5.2)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.chol)}}&nbsp;mmol/L</td>
+		             				 			{{#  if((isundefined(item.sex)) == '女'){ }}
+														<td align="left" colspan="2">尿酸(0.14~0.36)：</td>
+													{{# } else { }}
+		             				 					<td align="left" colspan="2">尿酸(0.2~0.42)：</td>
+													{{#  }}}
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.bsPh)}}&nbsp;mmol/L</td>
+		           							 </tr>
+											<tr>
+		             				 			<td align="center" colspan="2">身高：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.height)}}&nbsp;cm</td>
+		             				 			<td align="center" colspan="2">体重：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.weight)}}&nbsp;kg</td>
+		           							 </tr>
+		            						<tr>
+												<td align="center" colspan="2">BMI：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.bmi)}}&nbsp;kg/m2</td>
+		             				 			<td align="center" colspan="2">体温：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.temp)}}&nbsp;℃</td>
+		           							 </tr>
+		            						<tr>
+		             				 			<td align="center" colspan="2">心率(50~100)：</td>
+					 				 			<td align="center" colspan="10">{{istestdataval(item.testdata.fetalheart)}}&nbsp;bpm
+													&nbsp;&nbsp;&nbsp;&nbsp;<a onclick="window.parent.open_new_tab('outpatients/healthHeartImage.html?dataId={{istestdataval(item.testDataId)}}','心电图')"  href="#" class="layui-btn layui-btn-primary layui-btn-sm">查看心电图</a></td>
+		           							 </tr>
+											<tr>
+		             				 			<td align="center" colspan="2">白细胞(4.0~10.0)：</td>
+					 				 			<td align="center" colspan="10">{{istestdataval(item.testdata.hemameba)}}&nbsp;10^9/L</td>
+		           							 </tr>
+		            						<tr>
+		             				 			<td align="center" colspan="12">尿常规14项</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="center" colspan="2">pH值(pH)(5.0~8.0)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgPh)}}</td>
+		             				 			<td align="center" colspan="2">尿胆原(UBG)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgUbg)}}</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="center" colspan="2">潜血(BLD)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgBlo)}}</td>
+		             				 			<td align="center" colspan="2">蛋白质(PRO)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgPro)}}</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="center" colspan="2">酮体(KET)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgKet)}}</td>
+		             				 			<td align="center" colspan="2">亚硝酸盐(NIT)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgNit)}}</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="center" colspan="2">葡萄糖(GLU)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgGlu)}}</td>
+		             				 			<td align="center" colspan="2">胆红素(BIL)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgBil)}}</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="center" colspan="2">白细胞(LEU)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgLeu)}}</td>
+		             				 			<td align="center" colspan="2">比重(SG)(1.015~1.025)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgSg)}}</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="center" colspan="2">维生素C(VC)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgVc)}}</td>
+		             				 			<td align="center" colspan="2">微量白蛋白(MA)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgMa)}}</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="center" colspan="2">钙离子(Ca)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgCa)}}</td>
+		             				 			<td align="center" colspan="2">肌酐(Cr)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgCr)}}</td>
+		           							 </tr>
+
+		            						<tr>
+		             				 			<td align="center" colspan="12">血脂四项</td>
+		           							 </tr>
+		            						<!--<tr>
+		             				 			<td align="center" colspan="12">血液</td>
+		           							 </tr>-->
+        									<tr>
+		             				 			<td align="center" colspan="2">（血脂四项）总胆固醇(2.59~5.69)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.lipidsChol)}}&nbsp;mmol/L</td>
+												<td align="center" colspan="2">甘油三酯(0.56~1.7)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.lipidsTrig)}}&nbsp;mmol/L</td>
+
+		           							 </tr>
+        									<tr>
+		             				 			<td align="center" colspan="2">高密度脂蛋白(0.91~2.07)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.lipidsHdl)}}&nbsp;mmol/L</td>
+		             				 			<td align="center" colspan="2">低密度脂蛋白(1.29~3.16)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.lipidsLdl)}}&nbsp;mmol/L</td>
+		           							 </tr>
+
+		            						<tr>
+		             				 			<td align="center" colspan="12">糖化血红蛋白</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="center" colspan="2">eAG(4.3~6.0)：</td>
+					 				 			<td align="center" colspan="2">{{istestdataval(item.testdata.hba1cEag)}}&nbsp;mg/dL</td>
+		             				 			<td align="center" colspan="2">HbA1c IFCC(23.5~42.1)：</td>
+					 				 			<td align="center" colspan="2">{{istestdataval(item.testdata.hba1cIfcc)}}&nbsp;mmol/mol</td>
+		             				 			<td align="center" colspan="2">HbA1c NGSP(76.7~125.5)：</td>
+					 				 			<td align="center" colspan="2">{{istestdataval(item.testdata.hba1cNgsp)}}&nbsp;%</td>
+		           							 </tr>
+
+		            						<tr>
+		             				 			<td align="center" colspan="12">血红蛋白</td>
+		           							 </tr>
+        									<tr>
+		             				 			{{#  if((isundefined(item.sex)) == '女'){ }}
+														<td align="left" colspan="2">血红蛋白(120~150) ：</td>
+														<td align="center" colspan="4">{{istestdataval(item.testdata.hglbXhdb)}}&nbsp;g/L</td>
+		             				 					<td align="left" colspan="2">红细胞积压值(37~45)：</td>
+					 				 					<td align="center" colspan="4">{{istestdataval(item.testdata.hglbHxbjyz)}}&nbsp;%</td>
+													{{# } else { }}
+		             				 					<td align="left" colspan="2">血红蛋白(130~170) ：</td>
+														<td align="center" colspan="4">{{istestdataval(item.testdata.hglbXhdb)}}&nbsp;g/L</td>
+		             				 					<td align="left" colspan="2">红细胞积压值(40~50)：</td>
+					 				 					<td align="center" colspan="4">{{istestdataval(item.testdata.hglbHxbjyz)}}&nbsp;%</td>
+													{{#  }}}
+		           							 </tr>
+		       			 				</table>
+									 </td>
+		           				 </tr>
+		            			<tr>
+		             				 <td align="center" colspan="2">既往史：</td>
+					 				 <td align="center" colspan="10">{{isundefined(item.pastHistory)}}</td>
+		           				 </tr>
+		            			<tr>
+		             				 <td align="center" colspan="2">现病史：</td>
+					 				 <td align="center" colspan="10">{{isundefined(item.presentHistory)}}</td>
+		           				 </tr>
+		            			<tr>
+		             				 <td align="center" colspan="2">医生诊断：</td>
+					 				 <td align="center" colspan="10">{{isundefined(item.diagnosis)}}</td>
+		           				 </tr>
+		            			<tr>
+		             				 <td align="center" colspan="2">体征：</td>
+					 				 <td align="center" colspan="10">{{isundefined(item.posture)}}</td>
+		           				 </tr>
+		            			<tr>
+		             				 <td align="center" colspan="2">医生姓名：</td>
+					 				 <td align="center" colspan="10">{{isundefined(item.doctoryName)}}</td>
+		           				 </tr>
+		          			</tbody>
+		       			 </table>
+<br />
+<hr  style="background-color: #20222a;"/>
+<br />
+                    {{# }); }}
+	      </div>
+</script>
+<script id="print_testdataTpl" type="text/html">
+<hr style="background-color: #20222a;"/>
+       	 <div class="bodytable">
+                    {{# layui.each(d.data, function(index, item){}}
+		     			<table class="layui-table" mzid_div="{{isundefined(item.testDataId)}}">
+		          			<tbody>
+		            			<tr>
+		             				 <td align="left" colspan="2">测量时间：</td>
+					 				 <td align="center" colspan="10">{{isundefined(item.opDate)}}
+											<a mz_id='{{isundefined(item.testDataId)}}' style="float: right;" href="#"  class="layui-btn layui-btn-sm print_Mzxx" >打印门诊详情</a>
+									 </td>
+		           				 </tr>
+		            			<tr>
+		             				 <td id="result_td" align="left" valign="top"  colspan="2">
+										<div id="result_div">测量结果：</div>
+
+									</td>
+					 				 <td align="center" colspan="10">
+		     							<table class="layui-table">
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.sbp)) != '-？-'){ }}
+												<tr>
+		             				 				<td align="left" colspan="2">血压(90~140/60~90)：</td>
+					 				 				<td align="center" colspan="10">{{istestdataval(item.testdata.sbp)}}&nbsp;/&nbsp;{{istestdataval(item.testdata.dbp)}}&nbsp;mmHg</td>
+		           							 	</tr>
+											{{#  }}}
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.oximeter)) != '-？-'){ }}
+												<tr>
+													<td align="left" colspan="2">血氧(94~100)：</td>
+					 				 				<td align="center" colspan="10">{{istestdataval(item.testdata.oximeter)}}&nbsp;%</td>
+		           							 	</tr>
+											{{#  }}}
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.pulse)) != '-？-'){ }}
+												<tr>
+		             				 				<td align="left" colspan="2">脉率(50~100)：</td>
+					 				 				<td align="center" colspan="10">{{istestdataval(item.testdata.pulse)}}&nbsp;bpm</td>
+		           							 	</tr>
+											{{#  }}}
+
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.glu)) != '-？-'){ }}
+												<tr>
+		             				 				<td align="left" colspan="2">血糖类型：</td>
+					 				 				<td align="center" colspan="10">{{xtlx(item.testdata.memo1)}}</td>
+		           							 	</tr>
+												<tr>
+													{{#  if((xtlx(item.testdata.memo1)) == '空腹血糖'){ }}
+														<td align="left" colspan="2">血糖值(3.9~6.1)：</td>
+													{{# } else { }}
+		             				 					<td align="left" colspan="2">血糖值(3.9~10.0)：</td>
+													{{#  }}}
+					 				 				<td align="center" colspan="10">{{istestdataval(item.testdata.glu)}}&nbsp;mmol/L</td>
+		           							 	</tr>
+											{{#  }}}
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.chol)) != '-？-'){ }}
+												<tr>
+		             				 				<td align="left" colspan="2">总胆固醇(0.0~5.2)：</td>
+					 				 				<td align="center" colspan="10">{{istestdataval(item.testdata.chol)}}&nbsp;mmol/L</td>
+		           							 	</tr>
+											{{#  }}}
+
+
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.bsPh)) != '-？-'){ }}
+												<tr>
+													{{#  if((isundefined(item.sex)) == '女'){ }}
+														<td align="left" colspan="2">尿酸(0.14~0.36)：</td>
+													{{# } else { }}
+		             				 					<td align="left" colspan="2">尿酸(0.2~0.42)：</td>
+													{{#  }}}
+					 				 				<td align="center" colspan="10">{{istestdataval(item.testdata.bsPh)}}&nbsp;mmol/L</td>
+		           							 	</tr>
+											{{#  }}}
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.height)) != '-？-'){ }}
+												<tr>
+		             				 				<td align="left" colspan="2">身高：</td>
+					 				 				<td align="center" colspan="10">{{istestdataval(item.testdata.height)}}&nbsp;cm</td>
+		           							 	</tr>
+											{{#  }}}
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.weight)) != '-？-'){ }}
+												<tr>
+		             				 				<td align="left" colspan="2">体重：</td>
+					 				 				<td align="center" colspan="10">{{istestdataval(item.testdata.weight)}}&nbsp;kg</td>
+		           							 	</tr>
+											{{#  }}}
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.bmi)) != '-？-'){ }}
+												<tr>
+		             				 				<td align="left" colspan="2">BMI：</td>
+					 				 				<td align="center" colspan="10">{{istestdataval(item.testdata.bmi)}}&nbsp;kg/m2</td>
+		           							 	</tr>
+											{{#  }}}
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.temp)) != '-？-'){ }}
+												<tr>
+		             				 				<td align="left" colspan="2">体温：</td>
+					 				 				<td align="center" colspan="10">{{istestdataval(item.testdata.temp)}}&nbsp;℃</td>
+		           							 	</tr>
+											{{#  }}}
+
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.fetalheart)) != '-？-'){ }}
+												<tr>
+		             				 				<td align="left" colspan="2">心率(50~100)：</td>
+					 				 				<td align="center" colspan="10">{{istestdataval(item.testdata.fetalheart)}}&nbsp;bpm
+		           							 	</tr>
+											{{#  }}}
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.hemameba)) != '-？-'){ }}
+											<tr>
+		             				 			<td align="left" colspan="2">白细胞(4.0~10.0)：</td>
+					 				 			<td align="center" colspan="10">{{istestdataval(item.testdata.hemameba)}}&nbsp;10^9/L</td>
+		           							 </tr>
+											{{#  }}}
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.ncgPh)) != '-？-'){ }}
+												<tr>
+		             				 			<td align="center" colspan="12">尿常规14项</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="left" colspan="2">pH值(pH)(5.0~8.0)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgPh)}}</td>
+		             				 			<td align="left" colspan="2">尿胆原(UBG)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgUbg)}}</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="left" colspan="2">潜血(BLD)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgBlo)}}</td>
+		             				 			<td align="left" colspan="2">蛋白质(PRO)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgPro)}}</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="left" colspan="2">酮体(KET)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgKet)}}</td>
+		             				 			<td align="left" colspan="2">亚硝酸盐(NIT)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgNit)}}</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="left" colspan="2">葡萄糖(GLU)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgGlu)}}</td>
+		             				 			<td align="left" colspan="2">胆红素(BIL)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgBil)}}</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="left" colspan="2">白细胞(LEU)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgLeu)}}</td>
+		             				 			<td align="left" colspan="2">比重(SG)(1.015~1.025)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgSg)}}</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="left" colspan="2">维生素C(VC)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgVc)}}</td>
+		             				 			<td align="left" colspan="2">微量白蛋白(MA)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgMa)}}</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="left" colspan="2">钙离子(Ca)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgCa)}}</td>
+		             				 			<td align="left" colspan="2">肌酐(Cr)(阴性)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.ncgCr)}}</td>
+		           							 </tr>
+											{{#  }}}
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.lipidsChol)) != '-？-'){ }}
+												<tr>
+		             				 			<td align="center" colspan="12">血脂四项</td>
+		           							 </tr>
+        									<tr>
+		             				 			<td align="left" colspan="2">（血脂四项）总胆固醇(2.59~5.69)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.lipidsChol)}}&nbsp;mmol/L</td>
+												<td align="left" colspan="2">甘油三酯(0.56~1.7)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.lipidsTrig)}}&nbsp;mmol/L</td>
+
+		           							 </tr>
+        									<tr>
+		             				 			<td align="left" colspan="2">高密度脂蛋白(0.91~2.07)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.lipidsHdl)}}&nbsp;mmol/L</td>
+		             				 			<td align="left" colspan="2">低密度脂蛋白(1.29~3.16)：</td>
+					 				 			<td align="center" colspan="4">{{istestdataval(item.testdata.lipidsLdl)}}&nbsp;mmol/L</td>
+		           							 </tr>
+											{{#  }}}
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.hba1cEag)) != '-？-'){ }}
+												<tr>
+		             				 				<td align="center" colspan="12">糖化血红蛋白</td>
+		           							 	</tr>
+        										<tr>
+		             				 				<td align="left" colspan="2">eAG(4.3~6.0)：</td>
+					 				 				<td align="center" colspan="2">{{istestdataval(item.testdata.hba1cEag)}}&nbsp;mg/dL</td>
+		             				 				<td align="left" colspan="2">HbA1c IFCC(23.5~42.1)：</td>
+					 				 				<td align="center" colspan="2">{{istestdataval(item.testdata.hba1cIfcc)}}&nbsp;mmol/mol</td>
+		             				 				<td align="left" colspan="2">HbA1c NGSP(76.7~125.5)：</td>
+					 				 				<td align="center" colspan="2">{{istestdataval(item.testdata.hba1cNgsp)}}&nbsp;%</td>
+		           							 	</tr>
+											{{#  }}}
+											{{#  if(((istestdataval(d.flag))=='1' || istestdataval(item.testdata.hglbXhdb)) != '-？-'){ }}
+												<tr>
+		             				 				<td align="center" colspan="12">血红蛋白</td>
+		           							 	</tr>
+        										<tr>
+													{{#  if((isundefined(item.sex)) == '女'){ }}
+														<td align="left" colspan="2">血红蛋白(120~150) ：</td>
+														<td align="center" colspan="4">{{istestdataval(item.testdata.hglbXhdb)}}&nbsp;g/L</td>
+		             				 					<td align="left" colspan="2">红细胞积压值(37~45)：</td>
+					 				 					<td align="center" colspan="4">{{istestdataval(item.testdata.hglbHxbjyz)}}&nbsp;%</td>
+													{{# } else { }}
+		             				 					<td align="left" colspan="2">血红蛋白(130~170) ：</td>
+														<td align="center" colspan="4">{{istestdataval(item.testdata.hglbXhdb)}}&nbsp;g/L</td>
+		             				 					<td align="left" colspan="2">红细胞积压值(40~50)：</td>
+					 				 					<td align="center" colspan="4">{{istestdataval(item.testdata.hglbHxbjyz)}}&nbsp;%</td>
+													{{#  }}}
+
+
+		           							 	</tr>
+											{{#  }}}
+										</table>
+									 </td>
+		           				 </tr>
+
+		          			</tbody>
+		       			 </table>
+<br />
+<hr  style="background-color: #20222a;"/>
+<br />
+                    {{# }); }}
+	      </div>
+</script>
+
+
+
+<style type="text/css">
+
+  .bodytable{
+      background: #fff;
+      padding: 15px 15px;
+      min-height: 20px;
+      line-height: 20px;
+      font-size: 14px;
+  }
+  .w800{
+    width: 800px;
+    margin: 0px auto;
+  }
+  .tablehead{
+    padding: 9px 30px;
+    min-height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+  }
+  .tablehead.e{
+    padding: 9px 15px;
+  }
+  .tablehead .title{
+
+    padding: 9px 15px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .tablehead b{
+    font-size: 16px;
+  }
+  .layui-table{
+    margin: 0px;
+  }
+  .hidetable{
+    position: relative;
+  }
+  .hidetable div{
+    height: 40px;
+    background: #fff;
+    margin-top: -28px;
+    position: absolute;
+    margin-left: -16px;
+    width: 101%;
+  }
+  .txtr{
+    text-align: right;
+  }
+  .txtc{
+    text-align: center;
+  }  .floatr{
+    float: right;
+  }
+  .ks-tb{
+    background: #fff;
+    padding: 9px 15px;
+    min-height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+  }
+  .ks-tb .ks-l{
+    border: solid 1px #e6e6e6;
+  }
+  .mt15{
+    margin-top: 15px;
+  }
+  .ml5{
+    margin-left: 10px;
+  }
+  .w56{
+    display: inline-block;
+    width: 56px;
+  }
+  .mt75{
+    margin-top: 7.5px;
+  }
+  /* 表单 的layui修改*/
+  .pr10{
+    padding-right: 10px;
+  }
+  .layui-form-radio {
+    padding-right: 10px;
+    margin: 0px;
+    min-height: 19px;
+    line-height: 19px;
+    font-size: 14px;
+  }
+  .layui-form-radio>i{
+    margin-right: 3px;
+    font-size: 20px;
+  }
+  .layui-form-checkbox span{
+    padding-left: 3px;
+  }
+  .layui-form-checkbox[lay-skin=primary] span{
+    padding-right: 10px;
+  }
+  td label{
+    padding-right: 10px;
+  }
+  .layui-form-label{
+    padding: 0px;
+    width: auto;
+    line-height: 30px;
+  }
+  .layui-form-item {
+    margin-bottom: 0px;
+  }
+  .layui-input{
+    height: 30px;
+  }
+  .layui-input-block{
+    min-height: 30px;
+    margin-left: 40px;
+  }
+  .ml56{
+    margin-left: 66px;
+  }
+  .mr5{
+    margin-right: 5px;
+  }
+  .mr10{
+    margin-right: 10px;
+  }
+  .mr15{
+    margin-right: 15px;
+  }
+  .tdu{
+    display: inline-block;
+    min-width: 20px;
+    border-bottom: solid 1px #ccc;
+  }
+  .bbs1c{
+    border-bottom: solid 1px #ccc;
+  }
+  .mp15{
+    margin: 0 -15px;
+    padding: 0 15px;
+  }
+  .fen{
+    text-align: center;
+    color: #FF5722;
+  }
+</style>

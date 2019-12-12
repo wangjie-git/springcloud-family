@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ks.spfd.admin.mapper.SystemArameterMapper">
+
+  <resultMap id="systemArameterMap" type="com.ks.spfd.admin.api.entity.SystemArameter">
+                  <id property="fsystemId" column="FSYSTEM_ID"/>
+                        <result property="fsystemName" column="FSYSTEM_NAME"/>
+                        <result property="fsystemType" column="FSYSTEM_TYPE"/>
+                        <result property="fsystemValue" column="FSYSTEM_VALUE"/>
+                        <result property="fisavailable" column="FISAVAILABLE"/>
+                        <result property="fversion" column="FVERSION"/>
+                        <result property="flogcby" column="FLOGCBY"/>
+                        <result property="flogcdate" column="FLOGCDATE"/>
+                        <result property="flogluby" column="FLOGLUBY"/>
+                        <result property="flogludate" column="FLOGLUDATE"/>
+                        <result property="floglaby" column="FLOGLABY"/>
+                        <result property="flogladate" column="FLOGLADATE"/>
+                        <result property="fupdateVersion" column="FUPDATE_VERSION"/>
+            </resultMap>
+
+  <!--systemArameter简单分页查询-->
+  <select id="getSystemArameterPage" resultMap="systemArameterMap">
+    SELECT
+                  FSYSTEM_ID,
+                        FSYSTEM_NAME,
+                        FSYSTEM_TYPE,
+                        FSYSTEM_VALUE,
+                        FISAVAILABLE,
+                        FVERSION,
+                        FLOGCBY,
+                        FLOGCDATE,
+                        FLOGLUBY,
+                        FLOGLUDATE,
+                        FLOGLABY,
+                        FLOGLADATE,
+                        FUPDATE_VERSION
+              FROM p_system_parameter
+    <where>
+              <if test="systemArameter.fsystemId != null and systemArameter.fsystemId.trim() != ''">
+          AND FSYSTEM_ID = #{systemArameter.fsystemId}
+        </if>
+              <if test="systemArameter.fsystemName != null and systemArameter.fsystemName.trim() != ''">
+          AND FSYSTEM_NAME = #{systemArameter.fsystemName}
+        </if>
+              <if test="systemArameter.fsystemType != null and systemArameter.fsystemType.trim() != ''">
+          AND FSYSTEM_TYPE = #{systemArameter.fsystemType}
+        </if>
+              <if test="systemArameter.fsystemValue != null and systemArameter.fsystemValue.trim() != ''">
+          AND FSYSTEM_VALUE = #{systemArameter.fsystemValue}
+        </if>
+              <if test="systemArameter.fisavailable != null and systemArameter.fisavailable.trim() != ''">
+          AND FISAVAILABLE = #{systemArameter.fisavailable}
+        </if>
+              <if test="systemArameter.fversion != null and systemArameter.fversion.trim() != ''">
+          AND FVERSION = #{systemArameter.fversion}
+        </if>
+              <if test="systemArameter.flogcby != null and systemArameter.flogcby.trim() != ''">
+          AND FLOGCBY = #{systemArameter.flogcby}
+        </if>
+              <if test="systemArameter.flogcdate != null and systemArameter.flogcdate.trim() != ''">
+          AND FLOGCDATE = #{systemArameter.flogcdate}
+        </if>
+              <if test="systemArameter.flogluby != null and systemArameter.flogluby.trim() != ''">
+          AND FLOGLUBY = #{systemArameter.flogluby}
+        </if>
+              <if test="systemArameter.flogludate != null and systemArameter.flogludate.trim() != ''">
+          AND FLOGLUDATE = #{systemArameter.flogludate}
+        </if>
+              <if test="systemArameter.floglaby != null and systemArameter.floglaby.trim() != ''">
+          AND FLOGLABY = #{systemArameter.floglaby}
+        </if>
+              <if test="systemArameter.flogladate != null and systemArameter.flogladate.trim() != ''">
+          AND FLOGLADATE = #{systemArameter.flogladate}
+        </if>
+              <if test="systemArameter.fupdateVersion != null and systemArameter.fupdateVersion.trim() != ''">
+          AND FUPDATE_VERSION = #{systemArameter.fupdateVersion}
+        </if>
+          </where>
+  </select>
+
+
+
+</mapper>

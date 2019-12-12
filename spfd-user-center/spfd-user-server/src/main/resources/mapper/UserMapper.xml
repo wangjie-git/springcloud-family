@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.gpgp.user.server.repo.UserMapper">
+  <resultMap id="BaseResultMap" type="com.ks.gpgp.user.client.entity.User">
+    <id column="FUSER_ID" jdbcType="VARCHAR" property="fuserId" />
+    <result column="FEMP_ID" jdbcType="VARCHAR" property="fempId" />
+    <result column="FUSER_NAME" jdbcType="VARCHAR" property="fuserName" />
+    <result column="FPASSWORD" jdbcType="VARCHAR" property="fpassword" />
+    <result column="FISAVAILABLE" jdbcType="VARCHAR" property="fisavailable" />
+    <result column="FLAST_LOGIN" jdbcType="TIMESTAMP" property="flastLogin" />
+    <result column="FLAST_LOGIN_IP" jdbcType="VARCHAR" property="flastLoginIp" />
+    <result column="FVERSION" jdbcType="INTEGER" property="fversion" />
+    <result column="FLOGCBY" jdbcType="VARCHAR" property="flogcby" />
+    <result column="FLOGCDATE" jdbcType="TIMESTAMP" property="flogcdate" />
+    <result column="FLOGLUBY" jdbcType="VARCHAR" property="flogluby" />
+    <result column="FLOGLUDATE" jdbcType="TIMESTAMP" property="flogludate" />
+    <result column="FLOGLABY" jdbcType="VARCHAR" property="floglaby" />
+    <result column="FLOGLADATE" jdbcType="TIMESTAMP" property="flogladate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    FUSER_ID, FEMP_ID, FUSER_NAME, FPASSWORD, FISAVAILABLE, FLAST_LOGIN, FLAST_LOGIN_IP, 
+    FVERSION, FLOGCBY, FLOGCDATE, FLOGLUBY, FLOGLUDATE, FLOGLABY, FLOGLADATE
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from p_user
+    where FUSER_ID = #{fuserId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from p_user
+    where FUSER_ID = #{fuserId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ks.gpgp.user.client.entity.User">
+    insert into p_user (FUSER_ID, FEMP_ID, FUSER_NAME, 
+      FPASSWORD, FISAVAILABLE, FLAST_LOGIN, 
+      FLAST_LOGIN_IP, FVERSION, FLOGCBY, 
+      FLOGCDATE, FLOGLUBY, FLOGLUDATE, 
+      FLOGLABY, FLOGLADATE)
+    values (#{fuserId,jdbcType=VARCHAR}, #{fempId,jdbcType=VARCHAR}, #{fuserName,jdbcType=VARCHAR}, 
+      #{fpassword,jdbcType=VARCHAR}, #{fisavailable,jdbcType=VARCHAR}, #{flastLogin,jdbcType=TIMESTAMP}, 
+      #{flastLoginIp,jdbcType=VARCHAR}, #{fversion,jdbcType=INTEGER}, #{flogcby,jdbcType=VARCHAR}, 
+      #{flogcdate,jdbcType=TIMESTAMP}, #{flogluby,jdbcType=VARCHAR}, #{flogludate,jdbcType=TIMESTAMP}, 
+      #{floglaby,jdbcType=VARCHAR}, #{flogladate,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.gpgp.user.client.entity.User">
+    insert into p_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fuserId != null">
+        FUSER_ID,
+      </if>
+      <if test="fempId != null">
+        FEMP_ID,
+      </if>
+      <if test="fuserName != null">
+        FUSER_NAME,
+      </if>
+      <if test="fpassword != null">
+        FPASSWORD,
+      </if>
+      <if test="fisavailable != null">
+        FISAVAILABLE,
+      </if>
+      <if test="flastLogin != null">
+        FLAST_LOGIN,
+      </if>
+      <if test="flastLoginIp != null">
+        FLAST_LOGIN_IP,
+      </if>
+      <if test="fversion != null">
+        FVERSION,
+      </if>
+      <if test="flogcby != null">
+        FLOGCBY,
+      </if>
+      <if test="flogcdate != null">
+        FLOGCDATE,
+      </if>
+      <if test="flogluby != null">
+        FLOGLUBY,
+      </if>
+      <if test="flogludate != null">
+        FLOGLUDATE,
+      </if>
+      <if test="floglaby != null">
+        FLOGLABY,
+      </if>
+      <if test="flogladate != null">
+        FLOGLADATE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fuserId != null">
+        #{fuserId,jdbcType=VARCHAR},
+      </if>
+      <if test="fempId != null">
+        #{fempId,jdbcType=VARCHAR},
+      </if>
+      <if test="fuserName != null">
+        #{fuserName,jdbcType=VARCHAR},
+      </if>
+      <if test="fpassword != null">
+        #{fpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="fisavailable != null">
+        #{fisavailable,jdbcType=VARCHAR},
+      </if>
+      <if test="flastLogin != null">
+        #{flastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flastLoginIp != null">
+        #{flastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="fversion != null">
+        #{fversion,jdbcType=INTEGER},
+      </if>
+      <if test="flogcby != null">
+        #{flogcby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogcdate != null">
+        #{flogcdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flogluby != null">
+        #{flogluby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogludate != null">
+        #{flogludate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="floglaby != null">
+        #{floglaby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogladate != null">
+        #{flogladate,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.gpgp.user.client.entity.User">
+    update p_user
+    <set>
+      <if test="fempId != null">
+        FEMP_ID = #{fempId,jdbcType=VARCHAR},
+      </if>
+      <if test="fuserName != null">
+        FUSER_NAME = #{fuserName,jdbcType=VARCHAR},
+      </if>
+      <if test="fpassword != null">
+        FPASSWORD = #{fpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="fisavailable != null">
+        FISAVAILABLE = #{fisavailable,jdbcType=VARCHAR},
+      </if>
+      <if test="flastLogin != null">
+        FLAST_LOGIN = #{flastLogin,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flastLoginIp != null">
+        FLAST_LOGIN_IP = #{flastLoginIp,jdbcType=VARCHAR},
+      </if>
+      <if test="fversion != null">
+        FVERSION = #{fversion,jdbcType=INTEGER},
+      </if>
+      <if test="flogcby != null">
+        FLOGCBY = #{flogcby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogcdate != null">
+        FLOGCDATE = #{flogcdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flogluby != null">
+        FLOGLUBY = #{flogluby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogludate != null">
+        FLOGLUDATE = #{flogludate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="floglaby != null">
+        FLOGLABY = #{floglaby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogladate != null">
+        FLOGLADATE = #{flogladate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where FUSER_ID = #{fuserId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.gpgp.user.client.entity.User">
+    update p_user
+    set FEMP_ID = #{fempId,jdbcType=VARCHAR},
+      FUSER_NAME = #{fuserName,jdbcType=VARCHAR},
+      FPASSWORD = #{fpassword,jdbcType=VARCHAR},
+      FISAVAILABLE = #{fisavailable,jdbcType=VARCHAR},
+      FLAST_LOGIN = #{flastLogin,jdbcType=TIMESTAMP},
+      FLAST_LOGIN_IP = #{flastLoginIp,jdbcType=VARCHAR},
+      FVERSION = #{fversion,jdbcType=INTEGER},
+      FLOGCBY = #{flogcby,jdbcType=VARCHAR},
+      FLOGCDATE = #{flogcdate,jdbcType=TIMESTAMP},
+      FLOGLUBY = #{flogluby,jdbcType=VARCHAR},
+      FLOGLUDATE = #{flogludate,jdbcType=TIMESTAMP},
+      FLOGLABY = #{floglaby,jdbcType=VARCHAR},
+      FLOGLADATE = #{flogladate,jdbcType=TIMESTAMP}
+    where FUSER_ID = #{fuserId,jdbcType=VARCHAR}
+  </update>
+</mapper>

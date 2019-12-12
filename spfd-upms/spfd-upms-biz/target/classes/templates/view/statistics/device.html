@@ -1,0 +1,226 @@
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="stylesheet" href="../../public/plugins/device/css/index.css">
+<title>家庭医生数据中心</title>
+<script src="../../public/js/jquery.min.js"></script>
+<!-- <link rel="import" href="../common.html" id="common"> -->
+<script src="../../public/plugins/device/js/rem.js"></script>
+<script src="../../public/plugins/device/js/echarts.min.js"></script>
+<script src="../../public/plugins/device/js/china.js"></script>
+<script src="../../public/plugins/device/js/index.js"></script>
+<script src="../../public/plugins/device/js/guangxi.js"></script>
+</head>
+<body>
+	<div class="t_container">
+		<header class="t_header">
+			<span>家庭医生数据中心</span>
+		</header>
+		<div class="t_main">
+		<div class="t_left_box">
+			<img class="t_l_line"
+				src="../../public/plugins/device/img/left_line.png" alt="">
+			<table style="width: 100%;height: 100%;">
+				<tr>
+					<td style="vertical-align: top;"><div class="t_mbox2">
+							<div class="t_mbox t_rbox">
+								<i></i> <span>辖区人口</span>
+								<h2>58.6(万)</h2>
+							</div>
+							<div class="t_mbox t_gbox">
+								<i></i> <span>辖区档案</span>
+								<h2>50.3(万)</h2>
+							</div>
+							<div class="t_mbox t_ybox">
+								<i></i> <span>辖区签约</span>
+								<h2 id="orgNumber">13288</h2>
+							</div>
+						</div></td>
+					<td style="vertical-align: top;"><div class="t_mbox2">
+							<div class="t_mbox rt_rbox">
+								<i></i> <span>本月签约</span>
+								<h2 id="contractInfoNumber">42</h2>
+							</div>
+							<div class="t_mbox rt_gbox">
+								<i></i> <span>本月履约</span>
+								<h2 id="cancleContractNumber">10</h2>
+							</div>
+							<div class="t_mbox rt_ybox">
+								<i></i> <span>本月解约</span>
+								<h2 id="appointNumber">0</h2>
+							</div>
+						</div></td>
+				</tr>
+			</table>
+			<img class="t_r_line"
+				src="../../public/plugins/device/img/right_line.png" alt="">
+		</div>
+		<!-- <div class="test"></div> -->
+		<div class="t_center_box">
+			<div class="t_bottom_box">
+				<img class="t_l_line"
+					src="../../public/plugins/device/img/left_line.png" alt="">
+				<div id="chart_3" class="echart" style="width: 100%; height: 100%;"></div>
+				<img class="t_r_line"
+					src="../../public/plugins/device/img/right_line.png" alt="">
+			</div>
+		</div>
+		<div class="t_right_box">
+			<img class="t_l_line"
+				src="../../public/plugins/device/img/left_line.png" alt="">
+			<div style="height: 12%;">
+				<table class="t_table" style="height: 0.4rem; margin-top: 3%">
+				<thead>
+					<tr>
+						<th width="40%">机构</th>
+						<th width="15%">团队数量</th>
+						<th width="15%">签约人数</th>
+						<th width="15%">履约人数</th>
+						<th width="15%">履约率</th>
+					</tr>
+				</thead>
+			</table>
+			</div>
+			<div>
+				<marquee behavior="scroll" direction="up" onmouseover="this.stop()"
+				onmouseout="this.start()" style="align-self: top; height: 78%;">
+				<table class="t_table" id="table_org">
+					<tbody>
+						<tr>
+							<td width="40%">仪征市真州镇胥浦社区卫生服务中心</td>
+							<td width="15%">7</td>
+							<td width="15%">1005</td>
+							<td width="15%">0</td>
+							<td width="15%">0</td>
+						</tr>
+						<tr>
+							<td width="40%">仪征市十二圩卫生院</td>
+							<td width="15%">7</td>
+							<td width="15%">1066</td>
+							<td width="15%">0</td>
+							<td width="15%">0</td>
+						</tr>
+						<tr>
+							<td width="40%">仪征市马集镇卫生院</td>
+							<td width="15%">3</td>
+							<td width="15%">887</td>
+							<td width="15%">0</td>
+							<td width="15%">0</td>
+						</tr>
+						<tr>
+							<td width="40%">仪征市真州镇社区卫生服务中心</td>
+							<td width="15%">6</td>
+							<td width="15%">880</td>
+							<td width="15%">0</td>
+							<td width="15%">0</td>
+						</tr>
+						<tr>
+							<td width="40%">仪征市新城镇卫生院</td>
+							<td width="15%">7</td>
+							<td width="15%">1565</td>
+							<td width="15%">0</td>
+							<td width="15%">0</td>
+						</tr>
+						<tr>
+							<td width="40%">仪征市月塘中心卫生院</td>
+							<td width="15%">8</td>
+							<td width="15%">2656</td>
+							<td width="15%">1898</td>
+							<td width="15%">0.71</td>
+						</tr>
+						<tr>
+							<td width="40%">仪征市刘集镇卫生院</td>
+							<td width="15%">8</td>
+							<td width="15%">889</td>
+							<td width="15%">0</td>
+							<td width="15%">0</td>
+						</tr>
+						<tr>
+							<td width="40%">仪征市铜山卫生院</td>
+							<td width="15%">4</td>
+							<td width="15%">723</td>
+							<td width="15%">0</td>
+							<td width="15%">0</td>
+						</tr>
+						<tr>
+							<td width="40%">仪征市青山镇卫生院</td>
+							<td width="15%">4</td>
+							<td width="15%">663</td>
+							<td width="15%">0</td>
+							<td width="15%">0</td>
+						</tr>
+						<tr>
+							<td width="40%">仪征市陈集镇卫生院</td>
+							<td width="15%">6</td>
+							<td width="15%">410</td>
+							<td width="15%">0</td>
+							<td width="15%">0</td>
+						</tr>
+						<tr>
+							<td width="40%">仪征市大仪中心卫生院</td>
+							<td width="15%">5</td>
+							<td width="15%">424</td>
+							<td width="15%">0</td>
+							<td width="15%">0</td>
+						</tr>
+						<tr>
+							<td width="40%">仪征市新集镇卫生院</td>
+							<td width="15%">6</td>
+							<td width="15%">2120</td>
+							<td width="15%">1995</td>
+							<td width="15%">0.94</td>
+						</tr>
+					</tbody>
+				</table>
+			</marquee>
+			</div>
+			<img class="t_r_line"
+				src="../../public/plugins/device/img/right_line.png" alt="">
+		</div>
+		<div class="b_left_box">
+			<img class="t_l_line"
+				src="../../public/plugins/device/img/left_line.png" alt="">
+			<div id="chart_2" class="echart" style="width: 100%; height: 100%;"></div>
+			<img class="t_r_line"
+				src="../../public/plugins/device/img/right_line.png" alt="">
+		</div>
+
+		<!-- <div class="b_center_box">
+			<img class="t_l_line"
+				src="../../public/plugins/device/img/left_line.png" alt="">
+			<div id="chart_1" class="echart" style="width: 100%; height: 3.6rem;"></div>
+			<img class="t_r_line"
+				src="../../public/plugins/device/img/right_line.png" alt="">
+		</div> -->
+		<div class="b_right_box">
+			<img class="t_l_line"
+				src="../../public/plugins/device/img/left_line.png" alt="" />
+			<div style="heigth: 12%">
+				<table class="t_table" style="height: 0.4rem; margin-top: 3%">
+				<thead>
+					<tr>
+						<th width="10%">姓名</th>
+						<th width="20%">签约医生</th>
+						<th width="30%">签约团队</th>
+						<th width="40%">签约机构</th>
+					</tr>
+				</thead>
+			</table>
+			</div>
+			<div>
+				<marquee behavior="scroll" direction="up" onmouseover="this.stop()"
+				onmouseout="this.start()" style="align-self: top; height: 75%;">
+				<table class="t_table">
+					<tbody id="dataTable">
+					</tbody>
+				</table>
+			</marquee>
+			</div>
+			<img class="t_r_line"
+				src="../../public/plugins/device/img/right_line.png" alt="" />
+		</div>
+		</div>
+	</div>
+</body>
+</html>

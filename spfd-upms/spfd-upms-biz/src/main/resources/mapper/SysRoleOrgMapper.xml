@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ks.spfd.admin.mapper.SysRoleOrgMapper">
+
+  <resultMap id="sysRoleOrgMap" type="com.ks.spfd.admin.api.entity.SysRoleOrg">
+                  <id property="id" column="id"/>
+                        <result property="roleId" column="role_id"/>
+                        <result property="orgId" column="org_id"/>
+            </resultMap>
+
+  <!--sysRoleOrg简单分页查询-->
+  <select id="getSysRoleOrgPage" resultMap="sysRoleOrgMap">
+    SELECT
+                  id,
+                        role_id,
+                        org_id
+              FROM sys_role_org
+    <where>
+              <if test="sysRoleOrg.id != null and sysRoleOrg.id.trim() != ''">
+          AND id = #{sysRoleOrg.id}
+        </if>
+              <if test="sysRoleOrg.roleId != null and sysRoleOrg.roleId.trim() != ''">
+          AND role_id = #{sysRoleOrg.roleId}
+        </if>
+              <if test="sysRoleOrg.orgId != null and sysRoleOrg.orgId.trim() != ''">
+          AND org_id = #{sysRoleOrg.orgId}
+        </if>
+          </where>
+  </select>
+
+
+
+</mapper>

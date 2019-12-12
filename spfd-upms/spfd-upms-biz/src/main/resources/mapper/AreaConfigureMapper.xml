@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ks.spfd.admin.mapper.AreaConfigureMapper">
+
+  <resultMap id="areaConfigureMap" type="com.ks.spfd.admin.api.entity.AreaConfigure">
+                  <id property="fareaConfigureId" column="FAREA_CONFIGURE_ID"/>
+                        <result property="fareaManagerId" column="FAREA_MANAGER_ID"/>
+                        <result property="fconfigureCode" column="FCONFIGURE_CODE"/>
+                        <result property="fisTrue" column="FIS_TRUE"/>
+                        <result property="fvalue" column="FVALUE"/>
+                        <result property="fdesc" column="FDESC"/>
+                        <result property="fversion" column="FVERSION"/>
+                        <result property="flogcby" column="FLOGCBY"/>
+                        <result property="flogcdate" column="FLOGCDATE"/>
+                        <result property="flogluby" column="FLOGLUBY"/>
+                        <result property="flogludate" column="FLOGLUDATE"/>
+                        <result property="floglaby" column="FLOGLABY"/>
+                        <result property="flogladate" column="FLOGLADATE"/>
+            </resultMap>
+
+  <!--areaConfigure简单分页查询-->
+  <select id="getAreaConfigurePage" resultMap="areaConfigureMap">
+    SELECT
+                  FAREA_CONFIGURE_ID,
+                        FAREA_MANAGER_ID,
+                        FCONFIGURE_CODE,
+                        FIS_TRUE,
+                        FVALUE,
+                        FDESC,
+                        FVERSION,
+                        FLOGCBY,
+                        FLOGCDATE,
+                        FLOGLUBY,
+                        FLOGLUDATE,
+                        FLOGLABY,
+                        FLOGLADATE
+              FROM p_area_configure
+    <where>
+              <if test="areaConfigure.fareaConfigureId != null and areaConfigure.fareaConfigureId.trim() != ''">
+          AND FAREA_CONFIGURE_ID = #{areaConfigure.fareaConfigureId}
+        </if>
+              <if test="areaConfigure.fareaManagerId != null and areaConfigure.fareaManagerId.trim() != ''">
+          AND FAREA_MANAGER_ID = #{areaConfigure.fareaManagerId}
+        </if>
+              <if test="areaConfigure.fconfigureCode != null and areaConfigure.fconfigureCode.trim() != ''">
+          AND FCONFIGURE_CODE = #{areaConfigure.fconfigureCode}
+        </if>
+              <if test="areaConfigure.fisTrue != null and areaConfigure.fisTrue.trim() != ''">
+          AND FIS_TRUE = #{areaConfigure.fisTrue}
+        </if>
+              <if test="areaConfigure.fvalue != null and areaConfigure.fvalue.trim() != ''">
+          AND FVALUE = #{areaConfigure.fvalue}
+        </if>
+              <if test="areaConfigure.fdesc != null and areaConfigure.fdesc.trim() != ''">
+          AND FDESC = #{areaConfigure.fdesc}
+        </if>
+              <if test="areaConfigure.fversion != null and areaConfigure.fversion.trim() != ''">
+          AND FVERSION = #{areaConfigure.fversion}
+        </if>
+              <if test="areaConfigure.flogcby != null and areaConfigure.flogcby.trim() != ''">
+          AND FLOGCBY = #{areaConfigure.flogcby}
+        </if>
+              <if test="areaConfigure.flogcdate != null and areaConfigure.flogcdate.trim() != ''">
+          AND FLOGCDATE = #{areaConfigure.flogcdate}
+        </if>
+              <if test="areaConfigure.flogluby != null and areaConfigure.flogluby.trim() != ''">
+          AND FLOGLUBY = #{areaConfigure.flogluby}
+        </if>
+              <if test="areaConfigure.flogludate != null and areaConfigure.flogludate.trim() != ''">
+          AND FLOGLUDATE = #{areaConfigure.flogludate}
+        </if>
+              <if test="areaConfigure.floglaby != null and areaConfigure.floglaby.trim() != ''">
+          AND FLOGLABY = #{areaConfigure.floglaby}
+        </if>
+              <if test="areaConfigure.flogladate != null and areaConfigure.flogladate.trim() != ''">
+          AND FLOGLADATE = #{areaConfigure.flogladate}
+        </if>
+          </where>
+  </select>
+
+
+
+</mapper>

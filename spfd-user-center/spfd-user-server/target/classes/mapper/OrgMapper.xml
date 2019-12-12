@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.gpgp.user.server.repo.OrgMapper">
+  <resultMap id="BaseResultMap" type="com.ks.gpgp.user.client.entity.Org">
+    <id column="FORG_ID" jdbcType="VARCHAR" property="forgId" />
+    <result column="FRS_ID" jdbcType="VARCHAR" property="frsId" />
+    <result column="FPARENT_ID" jdbcType="VARCHAR" property="fparentId" />
+    <result column="FORG_CODE" jdbcType="VARCHAR" property="forgCode" />
+    <result column="FORG_NAME" jdbcType="VARCHAR" property="forgName" />
+    <result column="FORG_SHNAME" jdbcType="VARCHAR" property="forgShname" />
+    <result column="FORG_CLASS" jdbcType="VARCHAR" property="forgClass" />
+    <result column="FORG_ADDR" jdbcType="VARCHAR" property="forgAddr" />
+    <result column="FORG_CONTACTS" jdbcType="VARCHAR" property="forgContacts" />
+    <result column="FORG_TELEPHONE" jdbcType="VARCHAR" property="forgTelephone" />
+    <result column="FISAVAILABLE" jdbcType="VARCHAR" property="fisavailable" />
+    <result column="FORDERNUM" jdbcType="DECIMAL" property="fordernum" />
+    <result column="FORG_DESC" jdbcType="VARCHAR" property="forgDesc" />
+    <result column="FVERSION" jdbcType="INTEGER" property="fversion" />
+    <result column="FLOGCBY" jdbcType="VARCHAR" property="flogcby" />
+    <result column="FLOGCDATE" jdbcType="TIMESTAMP" property="flogcdate" />
+    <result column="FLOGLUBY" jdbcType="VARCHAR" property="flogluby" />
+    <result column="FLOGLUDATE" jdbcType="TIMESTAMP" property="flogludate" />
+    <result column="FLOGLABY" jdbcType="VARCHAR" property="floglaby" />
+    <result column="FLOGLADATE" jdbcType="TIMESTAMP" property="flogladate" />
+    <result column="FDOCKING_TIME" jdbcType="TIMESTAMP" property="fdockingTime" />
+    <result column="FORG_AREA" jdbcType="VARCHAR" property="forgArea" />
+    <result column="FCHECK_DATA_CONFIG" jdbcType="VARCHAR" property="fcheckDataConfig" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    FORG_ID, FRS_ID, FPARENT_ID, FORG_CODE, FORG_NAME, FORG_SHNAME, FORG_CLASS, FORG_ADDR, 
+    FORG_CONTACTS, FORG_TELEPHONE, FISAVAILABLE, FORDERNUM, FORG_DESC, FVERSION, FLOGCBY, 
+    FLOGCDATE, FLOGLUBY, FLOGLUDATE, FLOGLABY, FLOGLADATE, FDOCKING_TIME, FORG_AREA, 
+    FCHECK_DATA_CONFIG
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from p_org
+    where FORG_ID = #{forgId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from p_org
+    where FORG_ID = #{forgId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ks.gpgp.user.client.entity.Org">
+    insert into p_org (FORG_ID, FRS_ID, FPARENT_ID, 
+      FORG_CODE, FORG_NAME, FORG_SHNAME, 
+      FORG_CLASS, FORG_ADDR, FORG_CONTACTS, 
+      FORG_TELEPHONE, FISAVAILABLE, FORDERNUM, 
+      FORG_DESC, FVERSION, FLOGCBY, 
+      FLOGCDATE, FLOGLUBY, FLOGLUDATE, 
+      FLOGLABY, FLOGLADATE, FDOCKING_TIME, 
+      FORG_AREA, FCHECK_DATA_CONFIG)
+    values (#{forgId,jdbcType=VARCHAR}, #{frsId,jdbcType=VARCHAR}, #{fparentId,jdbcType=VARCHAR}, 
+      #{forgCode,jdbcType=VARCHAR}, #{forgName,jdbcType=VARCHAR}, #{forgShname,jdbcType=VARCHAR}, 
+      #{forgClass,jdbcType=VARCHAR}, #{forgAddr,jdbcType=VARCHAR}, #{forgContacts,jdbcType=VARCHAR}, 
+      #{forgTelephone,jdbcType=VARCHAR}, #{fisavailable,jdbcType=VARCHAR}, #{fordernum,jdbcType=DECIMAL}, 
+      #{forgDesc,jdbcType=VARCHAR}, #{fversion,jdbcType=INTEGER}, #{flogcby,jdbcType=VARCHAR}, 
+      #{flogcdate,jdbcType=TIMESTAMP}, #{flogluby,jdbcType=VARCHAR}, #{flogludate,jdbcType=TIMESTAMP}, 
+      #{floglaby,jdbcType=VARCHAR}, #{flogladate,jdbcType=TIMESTAMP}, #{fdockingTime,jdbcType=TIMESTAMP}, 
+      #{forgArea,jdbcType=VARCHAR}, #{fcheckDataConfig,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.gpgp.user.client.entity.Org">
+    insert into p_org
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="forgId != null">
+        FORG_ID,
+      </if>
+      <if test="frsId != null">
+        FRS_ID,
+      </if>
+      <if test="fparentId != null">
+        FPARENT_ID,
+      </if>
+      <if test="forgCode != null">
+        FORG_CODE,
+      </if>
+      <if test="forgName != null">
+        FORG_NAME,
+      </if>
+      <if test="forgShname != null">
+        FORG_SHNAME,
+      </if>
+      <if test="forgClass != null">
+        FORG_CLASS,
+      </if>
+      <if test="forgAddr != null">
+        FORG_ADDR,
+      </if>
+      <if test="forgContacts != null">
+        FORG_CONTACTS,
+      </if>
+      <if test="forgTelephone != null">
+        FORG_TELEPHONE,
+      </if>
+      <if test="fisavailable != null">
+        FISAVAILABLE,
+      </if>
+      <if test="fordernum != null">
+        FORDERNUM,
+      </if>
+      <if test="forgDesc != null">
+        FORG_DESC,
+      </if>
+      <if test="fversion != null">
+        FVERSION,
+      </if>
+      <if test="flogcby != null">
+        FLOGCBY,
+      </if>
+      <if test="flogcdate != null">
+        FLOGCDATE,
+      </if>
+      <if test="flogluby != null">
+        FLOGLUBY,
+      </if>
+      <if test="flogludate != null">
+        FLOGLUDATE,
+      </if>
+      <if test="floglaby != null">
+        FLOGLABY,
+      </if>
+      <if test="flogladate != null">
+        FLOGLADATE,
+      </if>
+      <if test="fdockingTime != null">
+        FDOCKING_TIME,
+      </if>
+      <if test="forgArea != null">
+        FORG_AREA,
+      </if>
+      <if test="fcheckDataConfig != null">
+        FCHECK_DATA_CONFIG,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="forgId != null">
+        #{forgId,jdbcType=VARCHAR},
+      </if>
+      <if test="frsId != null">
+        #{frsId,jdbcType=VARCHAR},
+      </if>
+      <if test="fparentId != null">
+        #{fparentId,jdbcType=VARCHAR},
+      </if>
+      <if test="forgCode != null">
+        #{forgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="forgName != null">
+        #{forgName,jdbcType=VARCHAR},
+      </if>
+      <if test="forgShname != null">
+        #{forgShname,jdbcType=VARCHAR},
+      </if>
+      <if test="forgClass != null">
+        #{forgClass,jdbcType=VARCHAR},
+      </if>
+      <if test="forgAddr != null">
+        #{forgAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="forgContacts != null">
+        #{forgContacts,jdbcType=VARCHAR},
+      </if>
+      <if test="forgTelephone != null">
+        #{forgTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="fisavailable != null">
+        #{fisavailable,jdbcType=VARCHAR},
+      </if>
+      <if test="fordernum != null">
+        #{fordernum,jdbcType=DECIMAL},
+      </if>
+      <if test="forgDesc != null">
+        #{forgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fversion != null">
+        #{fversion,jdbcType=INTEGER},
+      </if>
+      <if test="flogcby != null">
+        #{flogcby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogcdate != null">
+        #{flogcdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flogluby != null">
+        #{flogluby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogludate != null">
+        #{flogludate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="floglaby != null">
+        #{floglaby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogladate != null">
+        #{flogladate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdockingTime != null">
+        #{fdockingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forgArea != null">
+        #{forgArea,jdbcType=VARCHAR},
+      </if>
+      <if test="fcheckDataConfig != null">
+        #{fcheckDataConfig,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.gpgp.user.client.entity.Org">
+    update p_org
+    <set>
+      <if test="frsId != null">
+        FRS_ID = #{frsId,jdbcType=VARCHAR},
+      </if>
+      <if test="fparentId != null">
+        FPARENT_ID = #{fparentId,jdbcType=VARCHAR},
+      </if>
+      <if test="forgCode != null">
+        FORG_CODE = #{forgCode,jdbcType=VARCHAR},
+      </if>
+      <if test="forgName != null">
+        FORG_NAME = #{forgName,jdbcType=VARCHAR},
+      </if>
+      <if test="forgShname != null">
+        FORG_SHNAME = #{forgShname,jdbcType=VARCHAR},
+      </if>
+      <if test="forgClass != null">
+        FORG_CLASS = #{forgClass,jdbcType=VARCHAR},
+      </if>
+      <if test="forgAddr != null">
+        FORG_ADDR = #{forgAddr,jdbcType=VARCHAR},
+      </if>
+      <if test="forgContacts != null">
+        FORG_CONTACTS = #{forgContacts,jdbcType=VARCHAR},
+      </if>
+      <if test="forgTelephone != null">
+        FORG_TELEPHONE = #{forgTelephone,jdbcType=VARCHAR},
+      </if>
+      <if test="fisavailable != null">
+        FISAVAILABLE = #{fisavailable,jdbcType=VARCHAR},
+      </if>
+      <if test="fordernum != null">
+        FORDERNUM = #{fordernum,jdbcType=DECIMAL},
+      </if>
+      <if test="forgDesc != null">
+        FORG_DESC = #{forgDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fversion != null">
+        FVERSION = #{fversion,jdbcType=INTEGER},
+      </if>
+      <if test="flogcby != null">
+        FLOGCBY = #{flogcby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogcdate != null">
+        FLOGCDATE = #{flogcdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flogluby != null">
+        FLOGLUBY = #{flogluby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogludate != null">
+        FLOGLUDATE = #{flogludate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="floglaby != null">
+        FLOGLABY = #{floglaby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogladate != null">
+        FLOGLADATE = #{flogladate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdockingTime != null">
+        FDOCKING_TIME = #{fdockingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="forgArea != null">
+        FORG_AREA = #{forgArea,jdbcType=VARCHAR},
+      </if>
+      <if test="fcheckDataConfig != null">
+        FCHECK_DATA_CONFIG = #{fcheckDataConfig,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FORG_ID = #{forgId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.gpgp.user.client.entity.Org">
+    update p_org
+    set FRS_ID = #{frsId,jdbcType=VARCHAR},
+      FPARENT_ID = #{fparentId,jdbcType=VARCHAR},
+      FORG_CODE = #{forgCode,jdbcType=VARCHAR},
+      FORG_NAME = #{forgName,jdbcType=VARCHAR},
+      FORG_SHNAME = #{forgShname,jdbcType=VARCHAR},
+      FORG_CLASS = #{forgClass,jdbcType=VARCHAR},
+      FORG_ADDR = #{forgAddr,jdbcType=VARCHAR},
+      FORG_CONTACTS = #{forgContacts,jdbcType=VARCHAR},
+      FORG_TELEPHONE = #{forgTelephone,jdbcType=VARCHAR},
+      FISAVAILABLE = #{fisavailable,jdbcType=VARCHAR},
+      FORDERNUM = #{fordernum,jdbcType=DECIMAL},
+      FORG_DESC = #{forgDesc,jdbcType=VARCHAR},
+      FVERSION = #{fversion,jdbcType=INTEGER},
+      FLOGCBY = #{flogcby,jdbcType=VARCHAR},
+      FLOGCDATE = #{flogcdate,jdbcType=TIMESTAMP},
+      FLOGLUBY = #{flogluby,jdbcType=VARCHAR},
+      FLOGLUDATE = #{flogludate,jdbcType=TIMESTAMP},
+      FLOGLABY = #{floglaby,jdbcType=VARCHAR},
+      FLOGLADATE = #{flogladate,jdbcType=TIMESTAMP},
+      FDOCKING_TIME = #{fdockingTime,jdbcType=TIMESTAMP},
+      FORG_AREA = #{forgArea,jdbcType=VARCHAR},
+      FCHECK_DATA_CONFIG = #{fcheckDataConfig,jdbcType=VARCHAR}
+    where FORG_ID = #{forgId,jdbcType=VARCHAR}
+  </update>
+</mapper>

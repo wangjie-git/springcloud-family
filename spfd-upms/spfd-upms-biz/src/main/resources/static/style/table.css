@@ -1,0 +1,142 @@
+.pr10{
+  padding-right: 10px;
+}
+.layui-form-radio {
+  padding-right: 10px;
+  margin: 0px;
+  min-height: 19px;
+  line-height: 19px;
+  font-size: 14px;  
+}  
+.layui-form-radio>i{
+  margin-right: 3px;
+  font-size: 20px;
+}
+.layui-form-checkbox span{
+  padding-left: 3px;
+}
+.layui-form-checkbox[lay-skin=primary] span{
+  padding-right: 10px;
+}
+td label{
+  padding-right: 10px;
+
+}
+.layui-form-label{
+  padding: 0px;
+  width: auto;
+  line-height: 30px;
+}
+.layui-form-item {
+  margin-bottom: 0px;
+}
+.layui-input{
+  height: 30px;
+}
+.layui-input-block{
+  min-height: 30px;
+  margin-left: 40px;
+}
+.ml56{
+  margin-left: 66px;
+}
+
+
+
+
+.bodytable{
+    background: #fff;
+    padding: 15px 15px;
+    min-height: 20px;
+    line-height: 20px;
+    font-size: 14px;  
+}
+.w800{
+  width: 800px;
+  margin: 0px auto;
+}
+.tablehead{
+  padding: 9px 30px;
+  min-height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+}
+.tablehead.e{
+  padding: 9px 15px;
+}
+.tablehead .title{
+
+  padding: 9px 15px;
+  font-weight: bold;
+  font-size: 16px;
+}
+.tablehead b{
+  font-size: 16px;
+}
+.layui-table{
+  margin: 0px;
+}
+.hidetable{
+  position: relative;
+}
+.hidetable div{
+  height: 40px;
+  background: #fff;
+  margin-top: -28px;
+  position: absolute;
+  margin-left: -16px;
+  width: 101%;    
+}
+.txtr{
+  text-align: right;
+}
+.txtc{
+  text-align: center;
+}  .floatr{
+  float: right;
+}
+.ks-tb{
+  background: #fff;
+  padding: 9px 15px;
+  min-height: 20px;
+  line-height: 20px;
+  font-size: 14px;
+}
+.ks-tb .ks-l{
+  border: solid 1px #e6e6e6;
+}
+.mt15{
+  margin-top: 15px;
+}
+.ml5{
+  margin-left: 10px;
+}
+.w56{
+  display: inline-block;
+  width: 56px;
+}
+.w70{
+  display: inline-block;
+  width: 70px;
+}
+.mt75{
+  margin-top: 7.5px;
+}
+.layui-fr{
+  position: fixed;
+  right: 5px;
+  top: 10%;
+  width: 100px;
+}
+.dibw50{
+  display: inline-block;
+  width: 55px;
+}
+.dibw100{
+  display: inline-block;
+  width: 100px;
+}  
+.dibw080{
+  display: inline-block;
+  width: 80%;
+}

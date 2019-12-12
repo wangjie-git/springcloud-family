@@ -1,0 +1,74 @@
+  .bodytable{
+      background: #fff;
+      padding: 15px 15px;
+      min-height: 20px;
+      line-height: 20px;
+      font-size: 14px;
+  }
+  .w800{
+    width: 800px;
+    margin: 0px auto;
+  }
+  .tablehead{
+    padding: 9px 30px;
+    min-height: 30px;
+    line-height: 30px;
+    font-size: 14px;
+  }
+  .tablehead.e{
+    padding: 9px 15px;
+  }
+  .tablehead .title{
+
+    padding: 9px 15px;
+    font-weight: bold;
+    font-size: 16px;
+  }
+  .tablehead b{
+    font-size: 16px;
+  }
+  .layui-table{
+    margin: 0px;
+  }
+  .hidetable{
+    position: relative;
+  }
+  .hidetable div{
+    height: 40px;
+    background: #fff;
+    margin-top: -28px;
+    position: absolute;
+    margin-left: -16px;
+    width: 101%;
+  }
+  .txtr{
+    text-align: right;
+  }
+  .txtc{
+    text-align: center;
+  }  .floatr{
+    float: right;
+  }
+  .ks-tb{
+    background: #fff;
+    padding: 9px 15px;
+    min-height: 20px;
+    line-height: 20px;
+    font-size: 14px;
+  }
+  .ks-tb .ks-l{
+    border: solid 1px #e6e6e6;
+  }
+  .mt15{
+    margin-top: 15px;
+  }
+  .ml5{
+    margin-left: 10px;
+  }
+  .w56{
+    display: inline-block;
+    width: 56px;
+  }
+  .mt75{
+    margin-top: 7.5px;
+  }

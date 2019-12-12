@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>机构管理</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="import" href="common.html" id="common">
+<link rel="stylesheet" href="/layuiadmin/style/dtree/dtree.css"
+	media="all">
+<link rel="stylesheet" href="/layuiadmin/style/dtree/font/dtreefont.css"
+	media="all">
+<style>
+body {
+	overflow-y: scroll;
+}
+</style>
+</head>
+<body>
+	<div class="layui-fluid">
+		<div class="layui-row layui-col-space15">
+			<div class="layui-col-md3">
+				<div id="orgTree" class="dtree" data-id="0"></div>
+			</div>
+			<div class="layui-col-md9">
+				<table class="layui-table" id="label-table-operate"
+					lay-filter="label-table-operate"></table>
+			</div>
+		</div>
+		<script src="/view_js/org/index.js"></script>
+</body>
+</html>

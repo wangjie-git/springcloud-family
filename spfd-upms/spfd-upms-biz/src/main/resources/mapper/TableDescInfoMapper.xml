@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ks.spfd.admin.mapper.TableDescInfoMapper">
+
+  <resultMap id="tableDescInfoMap" type="com.ks.spfd.admin.api.entity.TableDescInfo">
+      <id property="fid" column="FID"/>
+          <result property="ftabName" column="FTAB_NAME"/>
+        <result property="ftabColName" column="FTAB_COL_NAME"/>
+        <result property="ftabColComment" column="FTAB_COL_COMMENT"/>
+        <result property="ftabColType" column="FTAB_COL_TYPE"/>
+        <result property="ftabColSize" column="FTAB_COL_SIZE"/>
+        <result property="ftabColScale" column="FTAB_COL_SCALE"/>
+        <result property="ftabColIsnull" column="FTAB_COL_ISNULL"/>
+        <result property="flogcby" column="FLOGCBY"/>
+        <result property="flogcdate" column="FLOGCDATE"/>
+        <result property="flogluby" column="FLOGLUBY"/>
+        <result property="flogludate" column="FLOGLUDATE"/>
+        <result property="floglaby" column="FLOGLABY"/>
+        <result property="flogladate" column="FLOGLADATE"/>
+        <result property="fversion" column="FVERSION"/>
+     </resultMap>
+
+  <!--tableDescInfo简单分页查询-->
+  <select id="getTableDescInfoPage" resultMap="tableDescInfoMap">
+    SELECT
+                  FTAB_NAME,
+                        FTAB_COL_NAME,
+                        FTAB_COL_COMMENT,
+                        FTAB_COL_TYPE,
+                        FTAB_COL_SIZE,
+                        FTAB_COL_SCALE,
+                        FTAB_COL_ISNULL,
+                        FLOGCBY,
+                        FLOGCDATE,
+                        FLOGLUBY,
+                        FLOGLUDATE,
+                        FLOGLABY,
+                        FLOGLADATE,
+                        FID,
+                        FVERSION
+              FROM p_table_desc_info
+    <where>
+              <if test="tableDescInfo.ftabName != null and tableDescInfo.ftabName.trim() != ''">
+          AND FTAB_NAME = #{tableDescInfo.ftabName}
+        </if>
+              <if test="tableDescInfo.ftabColName != null and tableDescInfo.ftabColName.trim() != ''">
+          AND FTAB_COL_NAME = #{tableDescInfo.ftabColName}
+        </if>
+              <if test="tableDescInfo.ftabColComment != null and tableDescInfo.ftabColComment.trim() != ''">
+          AND FTAB_COL_COMMENT = #{tableDescInfo.ftabColComment}
+        </if>
+              <if test="tableDescInfo.ftabColType != null and tableDescInfo.ftabColType.trim() != ''">
+          AND FTAB_COL_TYPE = #{tableDescInfo.ftabColType}
+        </if>
+              <if test="tableDescInfo.ftabColSize != null and tableDescInfo.ftabColSize.trim() != ''">
+          AND FTAB_COL_SIZE = #{tableDescInfo.ftabColSize}
+        </if>
+              <if test="tableDescInfo.ftabColScale != null and tableDescInfo.ftabColScale.trim() != ''">
+          AND FTAB_COL_SCALE = #{tableDescInfo.ftabColScale}
+        </if>
+              <if test="tableDescInfo.ftabColIsnull != null and tableDescInfo.ftabColIsnull.trim() != ''">
+          AND FTAB_COL_ISNULL = #{tableDescInfo.ftabColIsnull}
+        </if>
+              <if test="tableDescInfo.flogcby != null and tableDescInfo.flogcby.trim() != ''">
+          AND FLOGCBY = #{tableDescInfo.flogcby}
+        </if>
+              <if test="tableDescInfo.flogcdate != null and tableDescInfo.flogcdate.trim() != ''">
+          AND FLOGCDATE = #{tableDescInfo.flogcdate}
+        </if>
+              <if test="tableDescInfo.flogluby != null and tableDescInfo.flogluby.trim() != ''">
+          AND FLOGLUBY = #{tableDescInfo.flogluby}
+        </if>
+              <if test="tableDescInfo.flogludate != null and tableDescInfo.flogludate.trim() != ''">
+          AND FLOGLUDATE = #{tableDescInfo.flogludate}
+        </if>
+              <if test="tableDescInfo.floglaby != null and tableDescInfo.floglaby.trim() != ''">
+          AND FLOGLABY = #{tableDescInfo.floglaby}
+        </if>
+              <if test="tableDescInfo.flogladate != null and tableDescInfo.flogladate.trim() != ''">
+          AND FLOGLADATE = #{tableDescInfo.flogladate}
+        </if>
+              <if test="tableDescInfo.fid != null and tableDescInfo.fid.trim() != ''">
+          AND FID = #{tableDescInfo.fid}
+        </if>
+              <if test="tableDescInfo.fversion != null and tableDescInfo.fversion.trim() != ''">
+          AND FVERSION = #{tableDescInfo.fversion}
+        </if>
+          </where>
+  </select>
+
+
+
+</mapper>

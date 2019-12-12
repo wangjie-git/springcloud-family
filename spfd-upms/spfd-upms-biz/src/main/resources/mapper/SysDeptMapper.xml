@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ks.spfd.admin.mapper.SysDeptMapper">
+
+  <resultMap id="sysDeptMap" type="com.ks.spfd.admin.api.entity.SysDept">
+                  <id property="deptId" column="dept_id"/>
+                        <result property="deptCode" column="dept_code"/>
+                        <result property="deptName" column="dept_name"/>
+                        <result property="deptAddress" column="dept_address"/>
+                        <result property="deptDesc" column="dept_desc"/>
+                        <result property="available" column="available"/>
+                        <result property="version" column="version"/>
+                        <result property="createTime" column="create_time"/>
+                        <result property="updateTime" column="update_time"/>
+                        <result property="deptTitle" column="dept_title"/>
+                        <result property="extension1" column="extension1"/>
+                        <result property="extension2" column="extension2"/>
+            </resultMap>
+
+  <!--sysDept简单分页查询-->
+  <select id="getSysDeptPage" resultMap="sysDeptMap">
+    SELECT
+                  dept_id,
+                        dept_code,
+                        dept_name,
+                        dept_address,
+                        dept_desc,
+                        available,
+                        version,
+                        create_time,
+                        update_time,
+                        dept_title,
+                        extension1,
+                        extension2
+              FROM sys_dept
+    <where>
+              <if test="sysDept.deptId != null and sysDept.deptId.trim() != ''">
+          AND dept_id = #{sysDept.deptId}
+        </if>
+              <if test="sysDept.deptCode != null and sysDept.deptCode.trim() != ''">
+          AND dept_code = #{sysDept.deptCode}
+        </if>
+              <if test="sysDept.deptName != null and sysDept.deptName.trim() != ''">
+          AND dept_name = #{sysDept.deptName}
+        </if>
+              <if test="sysDept.deptAddress != null and sysDept.deptAddress.trim() != ''">
+          AND dept_address = #{sysDept.deptAddress}
+        </if>
+              <if test="sysDept.deptDesc != null and sysDept.deptDesc.trim() != ''">
+          AND dept_desc = #{sysDept.deptDesc}
+        </if>
+              <if test="sysDept.available != null and sysDept.available.trim() != ''">
+          AND available = #{sysDept.available}
+        </if>
+              <if test="sysDept.version != null and sysDept.version.trim() != ''">
+          AND version = #{sysDept.version}
+        </if>
+              <if test="sysDept.createTime != null and sysDept.createTime.trim() != ''">
+          AND create_time = #{sysDept.createTime}
+        </if>
+              <if test="sysDept.updateTime != null and sysDept.updateTime.trim() != ''">
+          AND update_time = #{sysDept.updateTime}
+        </if>
+              <if test="sysDept.deptTitle != null and sysDept.deptTitle.trim() != ''">
+          AND dept_title = #{sysDept.deptTitle}
+        </if>
+              <if test="sysDept.extension1 != null and sysDept.extension1.trim() != ''">
+          AND extension1 = #{sysDept.extension1}
+        </if>
+              <if test="sysDept.extension2 != null and sysDept.extension2.trim() != ''">
+          AND extension2 = #{sysDept.extension2}
+        </if>
+          </where>
+  </select>
+
+
+
+</mapper>

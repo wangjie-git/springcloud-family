@@ -1,0 +1,67 @@
+/* 表单 的layui修改*/
+  .pr10{
+    padding-right: 10px;
+  }
+  .layui-form-radio {
+    padding-right: 10px;
+    margin: 0px;
+    min-height: 19px;
+    line-height: 19px;
+    font-size: 14px;
+  }
+  .layui-form-radio>i{
+    margin-right: 3px;
+    font-size: 20px;
+  }
+  .layui-form-checkbox span{
+    padding-left: 3px;
+  }
+  .layui-form-checkbox[lay-skin=primary] span{
+    padding-right: 10px;
+  }
+  td label{
+    padding-right: 10px;
+  }
+  .layui-form-label{
+    padding: 0px;
+    width: auto;
+    line-height: 30px;
+  }
+  .layui-form-item {
+    margin-bottom: 0px;
+  }
+  .layui-input{
+    height: 30px;
+  }
+  .layui-input-block{
+    min-height: 30px;
+    margin-left: 40px;
+  }
+  .ml56{
+    margin-left: 66px;
+  }
+  .mr5{
+    margin-right: 5px;
+  }
+  .mr10{
+    margin-right: 10px;
+  }
+  .mr15{
+    margin-right: 15px;
+  }
+  .tdu{
+    display: inline-block;
+    min-width: 20px;
+    border-bottom: solid 1px #ccc;
+  }
+  .bbs1c{
+    border-bottom: solid 1px #ccc;
+  }
+  .mp15{
+    margin: 0 -15px;
+    padding: 0 15px;
+  }
+  .fen{
+    text-align: center;
+    color: #FF5722;
+  }

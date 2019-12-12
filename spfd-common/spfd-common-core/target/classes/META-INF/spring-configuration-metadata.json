@@ -1,0 +1,30 @@
+{
+  "hints": [],
+  "groups": [
+    {
+      "sourceType": "com.ks.spfd.common.core.config.FilterIgnorePropertiesConfig",
+      "name": "ignore",
+      "type": "com.ks.spfd.common.core.config.FilterIgnorePropertiesConfig"
+    }
+  ],
+  "properties": [
+    {
+      "sourceType": "com.ks.spfd.common.core.config.FilterIgnorePropertiesConfig",
+      "name": "ignore.clients",
+      "description": "放行终端配置，网关不校验此处的终端",
+      "type": "java.util.List<java.lang.String>"
+    },
+    {
+      "sourceType": "com.ks.spfd.common.core.config.FilterIgnorePropertiesConfig",
+      "name": "ignore.swagger-providers",
+      "description": "不聚合swagger",
+      "type": "java.util.List<java.lang.String>"
+    },
+    {
+      "sourceType": "com.ks.spfd.common.core.config.FilterIgnorePropertiesConfig",
+      "name": "ignore.urls",
+      "description": "放行url,放行的url不再被安全框架拦截",
+      "type": "java.util.List<java.lang.String>"
+    }
+  ]
+}

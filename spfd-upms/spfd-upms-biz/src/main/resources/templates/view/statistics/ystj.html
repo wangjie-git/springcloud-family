@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>家医统计</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="import" href="../common.html" id="common">
+<script type="text/javascript"
+	src="../../public/js/plugins/highcharts.js"></script>
+<script src="../../public/js/plugins/data.js"></script>
+<script src="../../public/js/plugins/drilldown.js"></script>
+<script src="../../public/js/plugins/exporting.js"></script>
+<style>
+body {
+	overflow-y: scroll;
+}
+</style>
+</head>
+<body>
+	<div class="layui-fluid">
+		<div class="layui-row layui-col-space15">
+			<div class="layui-col-md12">
+				<div class="layui-row layui-col-space15">
+					<div class="layui-col-md12">
+						<div class="layui-card">
+							<div class="layui-card-header">家医统计</div>
+							<div class="layui-card-body">
+								<form class="layui-form search-form" id="search-form" action="">
+									<div class="layui-form-item">
+										<div class="layui-inline">
+											<label class="layui-form-label">年报</label>
+											<div class="layui-input-inline" style="width: 140px;">
+												<input type="text" name="staticticYear" autocomplete="off"
+													class="layui-input time" id="staticticYear">
+											</div>
+											<div class="layui-inline">
+												<label class="layui-form-label">月报 </label>
+												<div class="layui-input-inline" style="width: 140px;">
+													<input type="text" name="staticticMonth" autocomplete="off"
+														class="layui-input time" id="staticticMonth">
+												</div>
+											</div>
+											<!-- <div class="layui-inline">
+												<label class="layui-form-label">日报 </label>
+												<div class="layui-input-inline" style="width: 140px;">
+													<input type="text" name="staticticDay" autocomplete="off"
+														class="layui-input time" id="staticticDay">
+												</div>
+											</div> -->
+											<div class="layui-inline">
+												<label class="layui-form-label">所属机构</label>
+												<div class="layui-input-block">
+													<div id="tree_select"
+														class="layui-unselect layui-form-select">
+														<div class="layui-select-title" id="open_select">
+															<input type="text" id="orgName" placeholder="请选择"
+																readonly=""
+																class="layui-input layui-unselect layui-form-selected">
+															<input type="text" id="orgId" name="orgId"
+																placeholder="请选择" value="" readonly=""
+																class="layui-hide"> <i class="layui-edge"></i>
+														</div>
+														<dl class="layui-anim layui-anim-upbit " id="demo"
+															style="">
+														</dl>
+													</div>
+												</div>
+											</div>
+											<div class="layui-inline">
+												<label class="layui-form-label">所属团队</label>
+												<div class="layui-input-block">
+													<select name="teamId" id="teamId" lay-filter="teamId"
+														lay-search>
+													</select>
+												</div>
+											</div>
+										</div>
+										<div class="layui-inline">
+											<div class="layui-input-inline" style="width: 280px;">
+												<button type="button" class="layui-btn" data-type="reload">筛选</button>
+												<button type="reset" class="layui-btn ">清空查询条件</button>
+											</div>
+										</div>
+									</div>
+								</form>
+								<table class="layui-table" id="label-table-operate"
+									lay-filter="label-table-operate"></table>
+								<div class="layui-row layui-col-space15"
+									style="margin-top: 20px;">
+									<div class="layui-col-md12">
+										<div class="layui-col-md6">
+											<div id="container"
+												style="min-width: 672x; height: 320px; margin: 0 auto;">
+											</div>
+										</div>
+										<div class="layui-col-md6">
+											<div id="container2"
+												style="min-width: 672x; height: 320px; margin: 0 auto;">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- <script src="../../public/view_js/team/teamtree.js"></script> -->
+	<script src="../../public/view_js/statistics/ystj.js"></script>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>服务记录</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+    content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<link rel="import" href="../common.html" id="common">
+<style>
+body {
+    overflow-y: scroll;
+}
+</style>
+</head>
+<body>
+    <div class="layui-fluid">
+        <div class="layui-row layui-col-space15">
+            <div class="layui-col-md12">
+                <div class="layui-row layui-col-space15">
+                    <div class="layui-col-md12">
+                        <div class="layui-card">
+                            <div class="layui-card-header">服务记录</div>
+                            <div class="layui-card-body">
+                        <form class="layui-form search-form" id="search-form" action="">
+                                <div class="layui-form-item">
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">姓名：</label>
+                                        <div class="layui-input-inline" style="width: 140px;">
+                                            <input type="text" name="name" id="name" autocomplete="off" class="layui-input">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">性别：</label>
+                                        <div class="layui-input-inline" style="width: 140px;">
+                                            <select name="sex" id="sex" lay-search>
+                                               <option value="">请选择</option>
+                                               <option value="0V1.0GENDER">未知的性别</option>
+											   <option value="1V1.0GENDER">男性</option>
+											   <option value="2V1.0GENDER">女性</option>
+											   <option value="9V1.0GENDER">未说明的性别</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">电话：</label>
+                                        <div class="layui-input-inline" style="width: 140px;">
+                                            <input type="text" name="phone" autocomplete="off" class="layui-input" id="phone">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">身份证号：</label>
+                                        <div class="layui-input-inline" style="width: 180px;">
+                                            <input type="text" name="idNumber" autocomplete="off" class="layui-input" id="idNumber">
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">来源：</label>
+                                        <div class="layui-input-inline" style="width: 140px;">
+                                            <select class="dataFrom_select" id="datafrom" name="datafrom">
+													<!-- <option value="" selected = "selected">请选择</option>
+													<option value="1" >康尚</option> -->
+											</select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">人群分类：</label>
+                                         <div class="layui-input-block" style="width: 500px;height:auto" id="labelIds">
+										           <!--  <select id="labelIds" name="classify" lay-filter="aaa"  lay-verify="required">
+
+										            </select> -->
+										        </div>
+                                        </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">服务包：</label>
+                                        <div class="layui-input-block" style="width: 500px;" id="packNames">
+										           <!--  <select id="packName" name="servicePackage" lay-filter="aaa" multiple lay-verify="required">
+
+										            </select> -->
+										        </div>
+                                        </div>
+                                    </div>
+
+									<div class="layui-inline">
+                                        <label class="layui-form-label">是否解约：</label>
+                                        <div class="layui-input-inline" style="width: 140px;">
+                                            <select name="isTermination" id="isTermination" lay-search>
+                                                <option value="">请选择</option>
+                                                <option value="Y">是</option>
+                                                <option value="N">否</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <label class="layui-form-label">创建时间：</label>
+	                                    <div class="layui-input-inline" style="width: 200px;">
+													<input type="text" class="layui-input" name="beginDate" id="beginDate"
+														placeholder=" ~ " lay-key="7">
+										</div>
+                                    </div>
+                                    <div class="layui-inline">
+                                        <div class="layui-input-inline" style="width: 280px;">
+                                            <button type="button" class="layui-btn" lay-submit="" lay-filter="contractMenReload">筛选</button>
+                                            <button type="reset" class="layui-btn ">清空查询条件</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                                <table class="layui-table" id="contractmen-table-operate"
+                                    lay-filter="contractmen-table-operate"></table>
+                                     <script type="text/html" id="test-table-operate-barDemo">
+                                <a class="layui-btn layui-btn-success layui-btn-xs" lay-event="detail">查看详情</a>
+                            </script>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../public/view_js/contractmen/index.js"></script>
+    <script src="../../public/view_js/util.js"></script>
+</body>
+</html>

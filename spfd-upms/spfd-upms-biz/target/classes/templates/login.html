@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<!-- <!-- 屏幕自动缩放 -->
+<meta name="viewport"
+	content="width=device-width,initial-scale=1.0,
+minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<title>家庭医生服务平台</title>
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/bootstrap/font-awesome/css/font-awesome.min.css"
+	rel="stylesheet">
+<link href="/css/skins/_all-skins.min.css" rel="stylesheet">
+<link href="/css/AdminLTE.min.css" rel="stylesheet">
+<style type="text/css">
+body {
+	background: #e1c192 url('/images/bg_1.png') no-repeat center top;
+	-webkit-background-size: cover;
+	/*-moz-background-size: cover;*/
+	background-size: cover;
+	background-attachment: fixed;
+	overflow-x: auto;
+}
+
+.wrapper {
+	margin-top: 80px;
+	margin-bottom: 80px;
+}
+
+.form-signin {
+	max-width: 390px;
+	padding: 15px 35px 45px;
+	margin: 0 auto;
+	background-color: #fff;
+	border: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.checkbox {
+	font-weight: normal;
+}
+
+.form-control {
+	position: relative;
+	font-size: 16px;
+	height: auto;
+	padding: 10px;
+	@
+	include
+	box-sizing(border-box);
+	&:
+	focus
+	{
+	z-index
+	:
+	2;
+}
+
+}
+input[type="text"] {
+	margin-bottom: -1px;
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+}
+
+input[type="password"] {
+	margin-bottom: 20px;
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+}
+}
+</style>
+<script type="text/javascript">
+/* 	window.onload = function() {
+		<c:if test="${not empty error}">
+		msg("登陆失败！用户名或密码错误", 'error');
+		setTimeout(function() {
+			location.href = 'login';
+		}, 2000);
+		</c:if>
+		<c:if test="${not empty logout}">
+		msg("登陆失败！用户名或密码错误", 'error');
+		setTimeout(function() {
+			location.href = 'login';
+		}, 2000);
+		</c:if>
+		$("#username").focus();
+		if (window.top != window.self) {
+			window.parent.location = "./login";
+		}
+	} */
+
+	document.onkeydown = function(event) {
+		var e = event || window.event || arguments.callee.caller.arguments[0];
+		if (e && e.keyCode == 13) { // enter 键
+			submitForm();
+		}
+	};
+
+	function submitForm() {
+		var userName = $("#username").val();
+		var password = $("#password").val();
+		var flag = true;
+		if (userName == null || userName == "") {
+			if (password == null || password == "") {
+				msg("请填写用户名和密码", "error");
+				flag = false;
+			} else {
+				msg("请填写用户名", "error");
+				flag = false;
+			}
+
+		} else {
+			if (password == null || password == "") {
+				msg("请填写密码", "error");
+				flag = false;
+			}
+		}
+		if (flag) {
+			$("#loginForm").submit();
+		} else {
+			$("#username").focus();
+			return;
+		}
+
+	}
+
+	function msg(msg, type) {
+		qiao.bs.msg({
+			msg : msg,
+			type : type,
+			time : 2000
+		});
+	}
+</script>
+
+</head>
+<body>
+	<!-- <div style="width:100%; height:100%; background:url(public/images/bg_1.png); "></div> -->
+	<div class="login-box"
+		style="position: relative; width: 50%; margin-top: 13%; left: 25%;">
+		<form class="form-signin" id="loginForm" method="post"
+			action="login">
+			<div class="login-logo"
+				style="line-height: 82px; text-align: center; border-bottom: 1px solid #6eb92b">
+				<span style="font-size: 24px; color: #6eb92b">用户登录</span>
+			</div>
+			<div style="height: 1px;">&nbsp;</div>
+			<div class="input-group input-group-lg"
+				style="width: 320px; margin-top: 30px;">
+				<span class="input-group-addon"
+					style="border-radius: 4px 0px 0px 4px;">账户</span> <input
+					type="text" class="form-control" id="username"
+					aria-describedby="sizing-addon1"
+					style="border-radius: 0px 4px 4px 0px;" name="username"
+					placeholder='请输入您的账户'>
+			</div>
+			<div class="input-group input-group-lg"
+				style="margin-top: 34px; width: 320px;">
+				<span class="input-group-addon"
+					style="border-radius: 4px 0px 0px 4px;">密码</span> <input
+					type="password" class="form-control" placeholder="请输入您的密码"
+					aria-describedby="sizing-addon1"
+					style="border-radius: 0px 4px 4px 0px;" id="password"
+					name="password">
+			</div>
+			<div style="margin-top: 34px; width: 320px;">
+				<input type="button" class="btn btn-lg btn-success btn-block"
+					value='登录' onclick="submitForm()" />
+			</div>
+			<div style="margin-top: 10px;">
+				<span id="message" style="color: red;"></span>
+			</div>
+		</form>
+	</div>
+</body>
+<script src="/js/jquery.min.js"></script>
+<script src="/bootstrap/js/bootstrap.js"></script>
+<script src="/bootstrap/js/popover.js"></script>
+<script type="text/javascript" src="/bootstrap/plugins/qiao/qiao.js"></script>
+</html>

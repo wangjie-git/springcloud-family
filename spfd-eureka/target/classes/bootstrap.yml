@@ -1,0 +1,33 @@
+server:
+  port: 8761
+
+spring:
+  security:
+    user:
+      name: konsung
+      password: konsung
+  application:
+    name: eureka
+  cloud:
+    config:
+      enabled: false
+
+# docker-compose部署时候 hostname 换成pig-eureka
+# 类似的 redis 使用pig-redis ,gateway 换成 pig-gateway
+eureka:
+  instance:
+    hostname: spfd-eureka
+    prefer-ip-address: true
+  client:
+    register-with-eureka: false
+    fetch-registry: false
+    service-url:
+      defaultZone: http://konsung:konsung@${eureka.instance.hostname}:${server.port}/eureka/
+  server:
+    eviction-interval-timer-in-ms: 10000
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'

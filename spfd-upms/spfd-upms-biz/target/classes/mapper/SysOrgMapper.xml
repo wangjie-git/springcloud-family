@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.spfd.admin.mapper.SysOrgMapper">
+
+	<resultMap id="sysOrgMap" type="com.ks.spfd.admin.api.entity.SysOrg">
+		<id property="orgId" column="org_id"/>
+		<result property="orgName" column="org_name"/>
+		<result property="orgParentId" column="org_parent_id"/>
+		<result property="orgRsId" column="org_rs_id"/>
+		<result property="orgCode" column="org_code"/>
+		<result property="orgClass" column="org_class"/>
+		<result property="orgAddr" column="org_addr"/>
+		<result property="orgContacts" column="org_contacts"/>
+		<result property="orgTelephone" column="org_telephone"/>
+		<result property="orgArea" column="org_area"/>
+		<result property="orgClientId" column="org_client_id"/>
+		<result property="orgThirdId" column="org_third_id"/>
+		<result property="available" column="available"/>
+		<result property="version" column="version"/>
+		<result property="createTime" column="create_time"/>
+		<result property="updateTime" column="update_time"/>
+		<result property="sort" column="sort"/>
+		<result property="delFlag" column="del_flag"/>
+		<result property="extension1" column="extension1"/>
+		<result property="extension2" column="extension2"/>
+	</resultMap>
+
+	<!-- 通用查询结果列 -->
+	<sql id="Base_Column_List">
+		org_id AS deptId, org_parent_id AS parentId, name, sort, create_time AS
+		createTime, update_time AS updateTime, del_flag AS delFlag
+	</sql>
+
+	<!--关联查询部门列表 -->
+	<select id="listDepts"
+		resultType="com.ks.spfd.admin.api.entity.SysOrg">
+		SELECT
+		t.*
+		FROM
+		sys_org t
+		LEFT JOIN sys_org_relation dr ON t.org_id = dr.descendant
+		WHERE
+		dr.ancestor = 0
+	</select>
+</mapper>

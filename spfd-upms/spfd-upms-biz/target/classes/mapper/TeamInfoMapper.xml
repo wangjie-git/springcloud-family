@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ks.spfd.admin.mapper.TeamInfoMapper">
+
+  <resultMap id="teamInfoMap" type="com.ks.spfd.admin.api.entity.TeamInfo">
+      <id property="fteamId" column="FTEAM_ID"/>
+            <result property="forgId" column="FORG_ID"/>
+            <result property="fteamName" column="FTEAM_NAME"/>
+            <result property="fteamCode" column="FTEAM_CODE"/>
+            <result property="fceateDate" column="FCEATE_DATE"/>
+            <result property="fteamDesc" column="FTEAM_DESC"/>
+            <result property="fversion" column="FVERSION"/>
+            <result property="flogcby" column="FLOGCBY"/>
+            <result property="flogcdate" column="FLOGCDATE"/>
+            <result property="flogluby" column="FLOGLUBY"/>
+            <result property="flogludate" column="FLOGLUDATE"/>
+            <result property="floglaby" column="FLOGLABY"/>
+            <result property="flogladate" column="FLOGLADATE"/>
+            <result property="fteamOtherId" column="FTEAM_OTHER_ID"/>
+            <result property="fisavailable" column="FISAVAILABLE"/>
+            <result property="fteamfrom" column="FTEAMFROM"/>
+            <result property="fremarks" column="FREMARKS"/>
+            <result property="forgRsId" column="FORG_RS_ID"/>
+            <result property="fareaCode" column="FAREA_CODE"/>
+</resultMap>
+
+  <!--teamInfo简单分页查询-->
+  <select id="getTeamInfoPage" resultMap="teamInfoMap">
+    SELECT
+                  FTEAM_ID,
+                        FORG_ID,
+                        FTEAM_NAME,
+                        FTEAM_CODE,
+                        FCEATE_DATE,
+                        FTEAM_DESC,
+                        FVERSION,
+                        FLOGCBY,
+                        FLOGCDATE,
+                        FLOGLUBY,
+                        FLOGLUDATE,
+                        FLOGLABY,
+                        FLOGLADATE,
+                        FTEAM_OTHER_ID,
+                        FISAVAILABLE,
+                        FTEAMFROM,
+                        FREMARKS,
+                        FORG_RS_ID,
+                        FAREA_CODE
+              FROM p_team_info
+    <where>
+              <if test="teamInfo.fteamId != null and teamInfo.fteamId.trim() != ''">
+          AND FTEAM_ID = #{teamInfo.fteamId}
+        </if>
+              <if test="teamInfo.forgId != null and teamInfo.forgId.trim() != ''">
+          AND FORG_ID = #{teamInfo.forgId}
+        </if>
+              <if test="teamInfo.fteamName != null and teamInfo.fteamName.trim() != ''">
+          AND FTEAM_NAME = #{teamInfo.fteamName}
+        </if>
+              <if test="teamInfo.fteamCode != null and teamInfo.fteamCode.trim() != ''">
+          AND FTEAM_CODE = #{teamInfo.fteamCode}
+        </if>
+              <if test="teamInfo.fceateDate != null and teamInfo.fceateDate.trim() != ''">
+          AND FCEATE_DATE = #{teamInfo.fceateDate}
+        </if>
+              <if test="teamInfo.fteamDesc != null and teamInfo.fteamDesc.trim() != ''">
+          AND FTEAM_DESC = #{teamInfo.fteamDesc}
+        </if>
+              <if test="teamInfo.fversion != null and teamInfo.fversion.trim() != ''">
+          AND FVERSION = #{teamInfo.fversion}
+        </if>
+              <if test="teamInfo.flogcby != null and teamInfo.flogcby.trim() != ''">
+          AND FLOGCBY = #{teamInfo.flogcby}
+        </if>
+              <if test="teamInfo.flogcdate != null and teamInfo.flogcdate.trim() != ''">
+          AND FLOGCDATE = #{teamInfo.flogcdate}
+        </if>
+              <if test="teamInfo.flogluby != null and teamInfo.flogluby.trim() != ''">
+          AND FLOGLUBY = #{teamInfo.flogluby}
+        </if>
+              <if test="teamInfo.flogludate != null and teamInfo.flogludate.trim() != ''">
+          AND FLOGLUDATE = #{teamInfo.flogludate}
+        </if>
+              <if test="teamInfo.floglaby != null and teamInfo.floglaby.trim() != ''">
+          AND FLOGLABY = #{teamInfo.floglaby}
+        </if>
+              <if test="teamInfo.flogladate != null and teamInfo.flogladate.trim() != ''">
+          AND FLOGLADATE = #{teamInfo.flogladate}
+        </if>
+              <if test="teamInfo.fteamOtherId != null and teamInfo.fteamOtherId.trim() != ''">
+          AND FTEAM_OTHER_ID = #{teamInfo.fteamOtherId}
+        </if>
+              <if test="teamInfo.fisavailable != null and teamInfo.fisavailable.trim() != ''">
+          AND FISAVAILABLE = #{teamInfo.fisavailable}
+        </if>
+              <if test="teamInfo.fteamfrom != null and teamInfo.fteamfrom.trim() != ''">
+          AND FTEAMFROM = #{teamInfo.fteamfrom}
+        </if>
+              <if test="teamInfo.fremarks != null and teamInfo.fremarks.trim() != ''">
+          AND FREMARKS = #{teamInfo.fremarks}
+        </if>
+              <if test="teamInfo.forgRsId != null and teamInfo.forgRsId.trim() != ''">
+          AND FORG_RS_ID = #{teamInfo.forgRsId}
+        </if>
+              <if test="teamInfo.fareaCode != null and teamInfo.fareaCode.trim() != ''">
+          AND FAREA_CODE = #{teamInfo.fareaCode}
+        </if>
+          </where>
+  </select>
+
+
+
+</mapper>

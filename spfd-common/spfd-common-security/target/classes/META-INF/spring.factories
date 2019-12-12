@@ -1,0 +1,8 @@
+org.springframework.boot.autoconfigure.EnableAutoConfiguration=\
+  com.ks.spfd.common.security.component.PermissionService,\
+  com.ks.spfd.common.security.component.PigAccessDeniedHandler,\
+  com.ks.spfd.common.security.component.PigSecurityInnerAspect,\
+  com.ks.spfd.common.security.component.ResourceAuthExceptionEntryPoint,\
+  com.ks.spfd.common.security.component.PigResourceServerTokenRelayAutoConfiguration,\
+  com.ks.spfd.common.security.feign.PigFeignClientConfiguration,\
+  com.ks.spfd.common.security.service.PigUserDetailsServiceImpl

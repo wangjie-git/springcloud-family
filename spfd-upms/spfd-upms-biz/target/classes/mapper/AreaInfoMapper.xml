@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ks.spfd.admin.mapper.AreaInfoMapper">
+
+  <resultMap id="areaInfoMap" type="com.ks.spfd.admin.api.entity.AreaInfo">
+                  <id property="fareaManagerId" column="FAREA_MANAGER_ID"/>
+                        <result property="fareaName" column="FAREA_NAME"/>
+                        <result property="fareaCode" column="FAREA_CODE"/>
+                        <result property="fareaRealCode" column="FAREA_REAL_CODE"/>
+                        <result property="fisUsed" column="FIS_USED"/>
+                        <result property="fcreateTime" column="FCREATE_TIME"/>
+                        <result property="fdesc" column="FDESC"/>
+                        <result property="fversion" column="FVERSION"/>
+                        <result property="flogcby" column="FLOGCBY"/>
+                        <result property="flogcdate" column="FLOGCDATE"/>
+                        <result property="flogluby" column="FLOGLUBY"/>
+                        <result property="flogludate" column="FLOGLUDATE"/>
+                        <result property="floglaby" column="FLOGLABY"/>
+                        <result property="flogladate" column="FLOGLADATE"/>
+            </resultMap>
+
+  <!--areaInfo简单分页查询-->
+  <select id="getAreaInfoPage" resultMap="areaInfoMap">
+    SELECT
+                  FAREA_MANAGER_ID,
+                        FAREA_NAME,
+                        FAREA_CODE,
+                        FAREA_REAL_CODE,
+                        FIS_USED,
+                        FCREATE_TIME,
+                        FDESC,
+                        FVERSION,
+                        FLOGCBY,
+                        FLOGCDATE,
+                        FLOGLUBY,
+                        FLOGLUDATE,
+                        FLOGLABY,
+                        FLOGLADATE
+              FROM p_area_info
+    <where>
+              <if test="areaInfo.fareaManagerId != null and areaInfo.fareaManagerId.trim() != ''">
+          AND FAREA_MANAGER_ID = #{areaInfo.fareaManagerId}
+        </if>
+              <if test="areaInfo.fareaName != null and areaInfo.fareaName.trim() != ''">
+          AND FAREA_NAME = #{areaInfo.fareaName}
+        </if>
+              <if test="areaInfo.fareaCode != null and areaInfo.fareaCode.trim() != ''">
+          AND FAREA_CODE = #{areaInfo.fareaCode}
+        </if>
+              <if test="areaInfo.fareaRealCode != null and areaInfo.fareaRealCode.trim() != ''">
+          AND FAREA_REAL_CODE = #{areaInfo.fareaRealCode}
+        </if>
+              <if test="areaInfo.fisUsed != null and areaInfo.fisUsed.trim() != ''">
+          AND FIS_USED = #{areaInfo.fisUsed}
+        </if>
+              <if test="areaInfo.fcreateTime != null and areaInfo.fcreateTime.trim() != ''">
+          AND FCREATE_TIME = #{areaInfo.fcreateTime}
+        </if>
+              <if test="areaInfo.fdesc != null and areaInfo.fdesc.trim() != ''">
+          AND FDESC = #{areaInfo.fdesc}
+        </if>
+              <if test="areaInfo.fversion != null and areaInfo.fversion.trim() != ''">
+          AND FVERSION = #{areaInfo.fversion}
+        </if>
+              <if test="areaInfo.flogcby != null and areaInfo.flogcby.trim() != ''">
+          AND FLOGCBY = #{areaInfo.flogcby}
+        </if>
+              <if test="areaInfo.flogcdate != null and areaInfo.flogcdate.trim() != ''">
+          AND FLOGCDATE = #{areaInfo.flogcdate}
+        </if>
+              <if test="areaInfo.flogluby != null and areaInfo.flogluby.trim() != ''">
+          AND FLOGLUBY = #{areaInfo.flogluby}
+        </if>
+              <if test="areaInfo.flogludate != null and areaInfo.flogludate.trim() != ''">
+          AND FLOGLUDATE = #{areaInfo.flogludate}
+        </if>
+              <if test="areaInfo.floglaby != null and areaInfo.floglaby.trim() != ''">
+          AND FLOGLABY = #{areaInfo.floglaby}
+        </if>
+              <if test="areaInfo.flogladate != null and areaInfo.flogladate.trim() != ''">
+          AND FLOGLADATE = #{areaInfo.flogladate}
+        </if>
+          </where>
+  </select>
+
+
+
+</mapper>

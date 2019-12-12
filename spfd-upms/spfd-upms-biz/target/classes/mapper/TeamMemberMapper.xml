@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ks.spfd.admin.mapper.TeamMemberMapper">
+
+  <resultMap id="teamMemberMap" type="com.ks.spfd.admin.api.entity.TeamMember">
+      <id property="fmemberId" column="FMEMBER_ID"/>
+            <result property="fteamId" column="FTEAM_ID"/>
+            <result property="femploeeId" column="FEMPLOEE_ID"/>
+            <result property="fmemberFunction" column="FMEMBER_FUNCTION"/>
+            <result property="fversion" column="FVERSION"/>
+            <result property="flogcby" column="FLOGCBY"/>
+            <result property="flogcdate" column="FLOGCDATE"/>
+            <result property="flogluby" column="FLOGLUBY"/>
+            <result property="flogludate" column="FLOGLUDATE"/>
+            <result property="floglaby" column="FLOGLABY"/>
+            <result property="flogladate" column="FLOGLADATE"/>
+</resultMap>
+
+  <!--teamMember简单分页查询-->
+  <select id="getTeamMemberPage" resultMap="teamMemberMap">
+    SELECT
+                  FMEMBER_ID,
+                        FTEAM_ID,
+                        FEMPLOEE_ID,
+                        FMEMBER_FUNCTION,
+                        FVERSION,
+                        FLOGCBY,
+                        FLOGCDATE,
+                        FLOGLUBY,
+                        FLOGLUDATE,
+                        FLOGLABY,
+                        FLOGLADATE
+              FROM p_team_member
+    <where>
+              <if test="teamMember.fmemberId != null and teamMember.fmemberId.trim() != ''">
+          AND FMEMBER_ID = #{teamMember.fmemberId}
+        </if>
+              <if test="teamMember.fteamId != null and teamMember.fteamId.trim() != ''">
+          AND FTEAM_ID = #{teamMember.fteamId}
+        </if>
+              <if test="teamMember.femploeeId != null and teamMember.femploeeId.trim() != ''">
+          AND FEMPLOEE_ID = #{teamMember.femploeeId}
+        </if>
+              <if test="teamMember.fmemberFunction != null and teamMember.fmemberFunction.trim() != ''">
+          AND FMEMBER_FUNCTION = #{teamMember.fmemberFunction}
+        </if>
+              <if test="teamMember.fversion != null and teamMember.fversion.trim() != ''">
+          AND FVERSION = #{teamMember.fversion}
+        </if>
+              <if test="teamMember.flogcby != null and teamMember.flogcby.trim() != ''">
+          AND FLOGCBY = #{teamMember.flogcby}
+        </if>
+              <if test="teamMember.flogcdate != null and teamMember.flogcdate.trim() != ''">
+          AND FLOGCDATE = #{teamMember.flogcdate}
+        </if>
+              <if test="teamMember.flogluby != null and teamMember.flogluby.trim() != ''">
+          AND FLOGLUBY = #{teamMember.flogluby}
+        </if>
+              <if test="teamMember.flogludate != null and teamMember.flogludate.trim() != ''">
+          AND FLOGLUDATE = #{teamMember.flogludate}
+        </if>
+              <if test="teamMember.floglaby != null and teamMember.floglaby.trim() != ''">
+          AND FLOGLABY = #{teamMember.floglaby}
+        </if>
+              <if test="teamMember.flogladate != null and teamMember.flogladate.trim() != ''">
+          AND FLOGLADATE = #{teamMember.flogladate}
+        </if>
+          </where>
+  </select>
+
+
+
+</mapper>

@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ks.spfd.admin.mapper.TableConfigMapper">
+
+  <resultMap id="tableConfigMap" type="com.ks.spfd.admin.api.entity.TableConfig">
+      <id property="fid" column="FID"/>
+            <result property="ftabName" column="FTAB_NAME"/>
+            <result property="fupdateVersion" column="FUPDATE_VERSION"/>
+            <result property="fisAdd" column="FIS_ADD"/>
+            <result property="fisEdit" column="FIS_EDIT"/>
+            <result property="fisDownload" column="FIS_DOWNLOAD"/>
+            <result property="fisClose" column="FIS_CLOSE"/>
+            <result property="fisSelfmotionnew" column="FIS_SELFMOTIONNEW"/>
+            <result property="flogcby" column="FLOGCBY"/>
+            <result property="flogcdate" column="FLOGCDATE"/>
+            <result property="flogludate" column="FLOGLUDATE"/>
+            <result property="flogluby" column="FLOGLUBY"/>
+            <result property="floglaby" column="FLOGLABY"/>
+            <result property="flogladate" column="FLOGLADATE"/>
+
+            <result property="fversion" column="FVERSION"/>
+        </resultMap>
+
+
+  <!--tableConfig简单分页查询-->
+  <select id="getTableConfigPage" resultMap="tableConfigMap">
+    SELECT
+                  FTAB_NAME,
+                        FUPDATE_VERSION,
+                        FIS_ADD,
+                        FIS_EDIT,
+                        FIS_DOWNLOAD,
+                        FIS_CLOSE,
+                        FIS_SELFMOTIONNEW,
+                        FLOGCBY,
+                        FLOGCDATE,
+                        FLOGLUDATE,
+                        FLOGLUBY,
+                        FLOGLABY,
+                        FLOGLADATE,
+                        FID,
+                        FVERSION
+              FROM p_table_config
+    <where>
+              <if test="tableConfig.ftabName != null and tableConfig.ftabName.trim() != ''">
+          AND FTAB_NAME = #{tableConfig.ftabName}
+        </if>
+              <if test="tableConfig.fupdateVersion != null and tableConfig.fupdateVersion.trim() != ''">
+          AND FUPDATE_VERSION = #{tableConfig.fupdateVersion}
+        </if>
+              <if test="tableConfig.fisAdd != null and tableConfig.fisAdd.trim() != ''">
+          AND FIS_ADD = #{tableConfig.fisAdd}
+        </if>
+              <if test="tableConfig.fisEdit != null and tableConfig.fisEdit.trim() != ''">
+          AND FIS_EDIT = #{tableConfig.fisEdit}
+        </if>
+              <if test="tableConfig.fisDownload != null and tableConfig.fisDownload.trim() != ''">
+          AND FIS_DOWNLOAD = #{tableConfig.fisDownload}
+        </if>
+              <if test="tableConfig.fisClose != null and tableConfig.fisClose.trim() != ''">
+          AND FIS_CLOSE = #{tableConfig.fisClose}
+        </if>
+              <if test="tableConfig.fisSelfmotionnew != null and tableConfig.fisSelfmotionnew.trim() != ''">
+          AND FIS_SELFMOTIONNEW = #{tableConfig.fisSelfmotionnew}
+        </if>
+              <if test="tableConfig.flogcby != null and tableConfig.flogcby.trim() != ''">
+          AND FLOGCBY = #{tableConfig.flogcby}
+        </if>
+              <if test="tableConfig.flogcdate != null and tableConfig.flogcdate.trim() != ''">
+          AND FLOGCDATE = #{tableConfig.flogcdate}
+        </if>
+              <if test="tableConfig.flogludate != null and tableConfig.flogludate.trim() != ''">
+          AND FLOGLUDATE = #{tableConfig.flogludate}
+        </if>
+              <if test="tableConfig.flogluby != null and tableConfig.flogluby.trim() != ''">
+          AND FLOGLUBY = #{tableConfig.flogluby}
+        </if>
+              <if test="tableConfig.floglaby != null and tableConfig.floglaby.trim() != ''">
+          AND FLOGLABY = #{tableConfig.floglaby}
+        </if>
+              <if test="tableConfig.flogladate != null and tableConfig.flogladate.trim() != ''">
+          AND FLOGLADATE = #{tableConfig.flogladate}
+        </if>
+              <if test="tableConfig.fid != null and tableConfig.fid.trim() != ''">
+          AND FID = #{tableConfig.fid}
+        </if>
+              <if test="tableConfig.fversion != null and tableConfig.fversion.trim() != ''">
+          AND FVERSION = #{tableConfig.fversion}
+        </if>
+          </where>
+  </select>
+
+
+
+</mapper>

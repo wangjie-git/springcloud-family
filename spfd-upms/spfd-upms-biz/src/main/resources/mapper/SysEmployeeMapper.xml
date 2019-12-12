@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ks.spfd.admin.mapper.SysEmployeeMapper">
+
+  <resultMap id="sysEmployeeMap" type="com.ks.spfd.admin.api.entity.SysEmployee">
+                  <id property="empId" column="emp_id"/>
+                        <result property="empCode" column="emp_code"/>
+                        <result property="empStaffid" column="emp_staffid"/>
+                        <result property="empName" column="emp_name"/>
+                        <result property="empIdcard" column="emp_idcard"/>
+                        <result property="empSex" column="emp_sex"/>
+                        <result property="empBirthdate" column="emp_birthdate"/>
+                        <result property="empTelphone" column="emp_telphone"/>
+                        <result property="empDesc" column="emp_desc"/>
+                        <result property="empMail" column="emp_mail"/>
+                        <result property="empType" column="emp_type"/>
+                        <result property="version" column="version"/>
+                        <result property="createTime" column="create_time"/>
+                        <result property="updateTime" column="update_time"/>
+                        <result property="available" column="available"/>
+                        <result property="empAuto" column="emp_auto"/>
+                        <result property="empThirdId" column="emp_third_id"/>
+                        <result property="extension1" column="extension1"/>
+                        <result property="extension2" column="extension2"/>
+            </resultMap>
+
+  <!--sysEmployee简单分页查询-->
+  <select id="getSysEmployeePage" resultMap="sysEmployeeMap">
+    SELECT
+                  emp_id,
+                        emp_code,
+                        emp_staffid,
+                        emp_name,
+                        emp_idcard,
+                        emp_sex,
+                        emp_birthdate,
+                        emp_telphone,
+                        emp_desc,
+                        emp_mail,
+                        emp_type,
+                        version,
+                        create_time,
+                        update_time,
+                        available,
+                        emp_auto,
+                        emp_third_id,
+                        extension1,
+                        extension2
+              FROM sys_employee
+    <where>
+              <if test="sysEmployee.empId != null and sysEmployee.empId.trim() != ''">
+          AND emp_id = #{sysEmployee.empId}
+        </if>
+              <if test="sysEmployee.empCode != null and sysEmployee.empCode.trim() != ''">
+          AND emp_code = #{sysEmployee.empCode}
+        </if>
+              <if test="sysEmployee.empStaffid != null and sysEmployee.empStaffid.trim() != ''">
+          AND emp_staffid = #{sysEmployee.empStaffid}
+        </if>
+              <if test="sysEmployee.empName != null and sysEmployee.empName.trim() != ''">
+          AND emp_name = #{sysEmployee.empName}
+        </if>
+              <if test="sysEmployee.empIdcard != null and sysEmployee.empIdcard.trim() != ''">
+          AND emp_idcard = #{sysEmployee.empIdcard}
+        </if>
+              <if test="sysEmployee.empSex != null and sysEmployee.empSex.trim() != ''">
+          AND emp_sex = #{sysEmployee.empSex}
+        </if>
+              <if test="sysEmployee.empBirthdate != null and sysEmployee.empBirthdate.trim() != ''">
+          AND emp_birthdate = #{sysEmployee.empBirthdate}
+        </if>
+              <if test="sysEmployee.empTelphone != null and sysEmployee.empTelphone.trim() != ''">
+          AND emp_telphone = #{sysEmployee.empTelphone}
+        </if>
+              <if test="sysEmployee.empDesc != null and sysEmployee.empDesc.trim() != ''">
+          AND emp_desc = #{sysEmployee.empDesc}
+        </if>
+              <if test="sysEmployee.empMail != null and sysEmployee.empMail.trim() != ''">
+          AND emp_mail = #{sysEmployee.empMail}
+        </if>
+              <if test="sysEmployee.empType != null and sysEmployee.empType.trim() != ''">
+          AND emp_type = #{sysEmployee.empType}
+        </if>
+              <if test="sysEmployee.version != null and sysEmployee.version.trim() != ''">
+          AND version = #{sysEmployee.version}
+        </if>
+              <if test="sysEmployee.createTime != null and sysEmployee.createTime.trim() != ''">
+          AND create_time = #{sysEmployee.createTime}
+        </if>
+              <if test="sysEmployee.updateTime != null and sysEmployee.updateTime.trim() != ''">
+          AND update_time = #{sysEmployee.updateTime}
+        </if>
+              <if test="sysEmployee.available != null and sysEmployee.available.trim() != ''">
+          AND available = #{sysEmployee.available}
+        </if>
+              <if test="sysEmployee.empAuto != null and sysEmployee.empAuto.trim() != ''">
+          AND emp_auto = #{sysEmployee.empAuto}
+        </if>
+              <if test="sysEmployee.empThirdId != null and sysEmployee.empThirdId.trim() != ''">
+          AND emp_third_id = #{sysEmployee.empThirdId}
+        </if>
+              <if test="sysEmployee.extension1 != null and sysEmployee.extension1.trim() != ''">
+          AND extension1 = #{sysEmployee.extension1}
+        </if>
+              <if test="sysEmployee.extension2 != null and sysEmployee.extension2.trim() != ''">
+          AND extension2 = #{sysEmployee.extension2}
+        </if>
+          </where>
+  </select>
+
+
+
+</mapper>

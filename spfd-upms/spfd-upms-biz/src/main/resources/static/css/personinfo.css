@@ -1,0 +1,275 @@
+.maindbody {
+   /*  margin-left: -15px; */
+   width: 100%;
+}
+
+.bodyleftTitle {
+    line-height: 44px;
+    height: 44px;
+    background-color: #007d70;
+    color: #fff;
+    font-size: 18px;
+    padding-left: 15px;
+}
+
+.bodyleftContent {
+    background-color: #009688;
+    color: #fff;
+    font-size: 18px;
+    padding-left: 15px;
+}
+
+.bodyRight {
+    margin-top: -15px;
+    background-color: #fff;
+    border-left: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+}
+
+.pframe {
+    overflow-x: hidden;
+    overflow-y: hidden;
+    width: 100%;
+    height: 100%;
+}
+
+.ml-15 {
+    margin-left: -15px;
+}
+
+.mt-15 {
+    margin-top: -15px;
+}
+
+.lh36 {
+    line-height: 36px;
+}
+
+.formDiv {
+    overflow-y: auto;
+    padding-top: 0px;
+    width: 920px;
+}
+
+.hi {
+    width: 148px;
+    height: 30px;
+    line-height: 30px;
+    background-color: #fff;
+    border-radius: 2px;
+    border: 1px solid #e6e6e6;
+    -webkit-transition: all .3s;
+    box-sizing: border-box;
+}
+
+.error{
+    border: 1px solid red;
+    color:#FF0000;
+    background:url(../images/ic_error.png) center right no-repeat;
+}
+.error::-webkit-input-placeholder{
+    color:#FF0000;
+}
+.pass{
+    border: 1px solid #3cbc99;
+    color:initial;
+    background:url(../images/ic_pass.png) center right no-repeat;
+}
+.cr {
+    color: red;
+}
+
+.lineb {
+    background: #3cbc99;
+    height: 2px;
+}
+
+.examTitle {
+    color: #333;
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 4px;
+    margin-top: 20px;
+}
+
+.examTitle1 {
+    color: #333;
+    font-size: 18px;
+    line-height: 18px;
+    margin-bottom: 4px;
+}
+
+.linec {
+    background: #ccc;
+    height: 1px;
+}
+
+.h36 {
+    height: 36px;
+}
+
+.ml5 {
+    margin-left: 5px;
+}
+
+.w100 {
+    width: 100%;
+}
+.w100p{
+    width: 100px;
+    }
+.w60{
+    width: 80px;
+}
+.mt20 {
+    margin-top: 20px;
+}
+
+.ep {
+    background-color: #3cbc99;
+    color: #fff;
+    margin-left: 5px;
+}
+
+.epd {
+    background-color: #fff;
+    color: #333;
+}
+
+.layui-input-block {
+    margin-left: 0px;
+    min-height: 30px;
+    width: 148px;
+}
+
+.layui-form-select .layui-input {
+    padding-right: 0;
+    cursor: pointer;
+    padding-left: 0px;
+    height: 30px;
+}
+
+.layui-form-label {
+    float: left;
+    display: block;
+    padding: 9px 0px;
+    width: 100px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: right;
+}
+
+.layui-table {
+
+}
+
+.layui-table td {
+    position: relative;
+    min-height: 20px;
+    padding: 0px;
+    line-height: 20px;
+    font-size: 14px;
+    line-height: 20px;
+}
+
+.formDiv::-webkit-scrollbar {
+    width: 3px;
+    height: 0px;
+}
+
+.formDiv::-webkit-scrollbar-button {
+    background-color: #FFF;
+}
+
+.formDiv::-webkit-scrollbar-track {
+    background: #FF66D5;
+}
+
+.formDiv::-webkit-scrollbar-track-piece {
+    background: #f5f5f5;
+}
+
+.formDiv::-webkit-scrollbar-thumb {
+    background: #009688;
+    border-radius: 2px;
+}
+
+.formDiv::-webkit-scrollbar-corner {
+    background: #82AFFF;
+}
+
+.formDiv::-webkit-scrollbar-resizer {
+    background: #FF0BEE;
+}
+
+.h5p {
+    height: 5px;
+}
+
+.heBut {
+    height: 24px;
+    line-height: 24px;
+}
+.pl10{
+    padding-left: 10px;
+}
+.pr15{
+    padding-right: 15px;
+}
+.personForm{
+    width: 920px;
+    border: 1px solid #ccc;
+}
+.p0{
+    padding: 0px;
+}
+.pl5{
+    padding-left: 5px;
+}
+.mainwidth{
+    width:910px;
+}
+.bgc{
+    background-color: #ccc;
+}
+.w70{
+    width:70px;
+}
+<!--inventory -->
+.invenNextBody {
+    overflow-y: auto;
+    margin-left: -15px;
+}
+
+.invenNextBody::-webkit-scrollbar {
+    width: 5px;
+    height: 10px;
+}
+
+.invenNextBody::-webkit-scrollbar-button {
+    background-color: #007d70;
+}
+
+.invenNextBody::-webkit-scrollbar-track {
+    background: #FF66D5;
+}
+
+.invenNextBody::-webkit-scrollbar-track-piece {
+    background: #4E5465;
+}
+
+.invenNextBody::-webkit-scrollbar-thumb {
+    background: #009688;
+    border-radius: 2px;
+}
+
+.invenNextBody ::-webkit-scrollbar-corner {
+    background: #82AFFF;
+}
+
+.invenNextBody::-webkit-scrollbar-resizer {
+    background: #FF0BEE;
+}
+.layui-timeline-item{
+    border:1px solid #fff;
+}

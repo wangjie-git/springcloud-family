@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>新增区域签约</title>
+<meta name="renderer" content="webkit">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=0">
+<!--  <link rel="stylesheet" href="../layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="../layuiadmin/style/admin.css" media="all"> -->
+<link rel="import" href="../common.html" id="common">
+<!-- <link rel="stylesheet" href="../layuiadmin/style/table.css" media="all"> -->
+</head>
+<body>
+	<div class="layui-container">
+		<div class="layui-row layui-col-space15 mt75">
+			<div class="layui-col-md12 layui-form">
+				<div class="tablehead">
+					<div class="layui-row">
+						<div class="layui-col-xs6 layui-col-md12 txtr">
+							<a href="../area/AreaInFo.html"
+								class="layui-btn layui-btn-primary layui-btn-sm">返回</a> <a
+								class="layui-btn layui-btn-sm" lay-submit lay-filter="formDemo">保存</a>
+						</div>
+					</div>
+				</div>
+				<div class="bodytable" id="tablehtml"></div>
+			</div>
+		</div>
+	</div>
+	<script src="../../public/view_js/area/areaadd.js"></script>
+</body>
+</html>
+
+<script id="demoTpl" type="text/html">
+  <div class="tablehead">
+  </div>
+  <div class="bodytable">
+    <table class="layui-table">
+      <tbody>
+      <tr>
+        <td colspan="2">区域名称：<font color='red'>*</font></td>
+        <td colspan="8"> <input type="hide" name="id" id="id"  placeholder="" autocomplete="off" class="layui-hide " style="width: 600px;" value="{{isundefined(d.id)}}" >
+		<input type="text" name="areaName" lay-verify="required|length|numberOrEngORChn" length="64" placeholder="" autocomplete="off" class="layui-input " style="width: 600px;" value="{{isundefined(d.areaName)}}" >
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">区域编码：<font color='red'>*</font></td>
+        <td colspan="8"> <input type="text" lay-verify="required|length|areacode|numberOrEng" length="64" name="areaCode" id="areaCode" placeholder="" autocomplete="off" class="layui-input" style="width: 600px;" value="{{isundefined(d.areaCode)}}" >
+        </td>
+      </tr>
+      <tr>
+        <td colspan="2">默认归属地：</td>
+        <td colspan="8"> <input type="text" lay-verify="length" length="64" name="areaAddress" id="areaAddress" placeholder="" autocomplete="off" class="layui-input" style="width: 600px;" value="{{isundefined(d.areaAddress)}}" >
+        </td>
+      </tr>
+	<tr>
+        <td colspan="2">是否可用<font color='red'>*</font></td>
+        	<td colspan="8">
+          		<input type="radio" name="isUsed" value="Y" lay-verify="required|radio" text="是否可用" {{ischecked(d.isUsed,"Y")}} title="是">
+          		<input type="radio" name="isUsed" value="N" lay-verify="required|radio" text="是否可用" {{ischecked(d.isUsed,"N")}} title="否">
+        	</td>
+		</td>
+      </tr>
+	<tr>
+        <td colspan="2">是否需要支付</td>
+        	<td colspan="8">
+          		<input type="radio" name="needPay" value="Y" lay-verify="required|radio" text="是否需要支付" {{ischecked(d.needPay,"Y")}} title="是">
+          		<input type="radio" name="needPay" value="N" lay-verify="required|radio" text="是否需要支付" {{ischecked(d.needPay,"N")}} title="否">
+        	</td>
+		</td>
+      </tr>
+	<tr>
+        <td colspan="2">第三方编码：<font color='red'>*</font></td>
+        <td colspan="8"> <input type="text" name="otherCode" lay-verify="required|length" length="32" placeholder="" autocomplete="off" class="layui-input " style="width: 600px;" value="{{isundefined(d.otherCode)}}">
+        </td>
+      </tr>
+<tr>
+<tr>
+        <td colspan="2">第三方名称：<font color='red'>*</font></td>
+        <td colspan="8"> <input type="text" name="otherName" lay-verify="required|length" length="32" placeholder="" autocomplete="off" class="layui-input " style="width: 600px;" value="{{isundefined(d.otherName)}}">
+        </td>
+      </tr>
+<tr>
+	<tr>
+        <td colspan="2">是否需要转发医服</td>
+        	<td colspan="8">
+          		<input type="radio" name="needToYF" value="Y" lay-verify="required|radio" text="是否转发医服" {{ischecked(d.needToYF,"Y")}} title="是">
+          		<input type="radio" name="needToYF" value="N" lay-verify="required|radio" text="是否转发医服" {{ischecked(d.needToYF,"N")}} title="否">
+        	</td>
+		</td>
+
+      </tr>
+	  <tr>
+		<td colspan="2">建档完成和签约完成是否弹出二维码：</td>
+        <td colspan="8">
+          	<input type="radio" name="isqyqrcode" value="Y" {{ischecked(d.isqyqrcode,"Y")}} title="是">
+          	<input type="radio" name="isqyqrcode" value="N" {{ischecked(d.isqyqrcode,"N")}} title="否">
+        </td>
+	  </tr>
+	<tr>
+        <td colspan="2">一体机是否支持离线登录：</td>
+        <td colspan="8">
+          	<input type="radio" name="sol" value="Y" {{ischecked(d.sol,"Y")}} title="是">
+          	<input type="radio" name="sol" value="N" {{ischecked(d.sol,"N")}} title="否">
+        </td>
+      </tr>
+<tr>
+        <td colspan="2">医服天下数据通讯地址：</td>
+        <td colspan="8"> <input type="text" name="yftxUploadUrl" lay-verify="length" length="256" placeholder="" autocomplete="off" class="layui-input " style="width: 600px;" value="{{isundefined(d.yftxUploadUrl)}}">
+        </td>
+      </tr>
+<tr>
+<tr>
+        <td colspan="2">家医数据共享上传地址：</td>
+        <td colspan="8"> <input type="text" name="uploadUrl" lay-verify="length|validateLoc" length="256" placeholder="" autocomplete="off" class="layui-input " style="width: 600px;" value="{{isundefined(d.uploadUrl)}}">
+        </td>
+      </tr>
+<tr>
+        <td colspan="2">家医数据共享下载地址：</td>
+        <td colspan="8"> <input type="text" name="downloadUrl" lay-verify="length|validateLoc" length="256" placeholder="" autocomplete="off" class="layui-input " style="width: 600px;" value="{{isundefined(d.downloadUrl)}}">
+        </td>
+      </tr>
+<tr>
+        <td colspan="2">是否配置公共卫生系统：</td>
+        <td colspan="8">
+			<input type="checkbox" name="isNeedPositionGw"  id="isNeedPositionGw" lay-skin="switch" lay-text="开启|关闭" lay-filter="isNeedPositionFilter" checked>
+        </td>
+      </tr>
+<tr>
+        <td colspan="2">公共卫生共享上传地址：</td>
+        <td colspan="8"> <input type="text" name="ggwsuploadUrl" id="ggwsuploadUrl" lay-verify="length|validateLoc" length="256" placeholder="" autocomplete="off" class="layui-input " style="width: 600px;" value="{{isundefined(d.ggwsuploadUrl)}}">
+        </td>
+      </tr>
+<tr>
+        <td colspan="2">公共卫生共享下载地址：</td>
+        <td colspan="8"> <input type="text" name="ggwsdownloadUrl" id="ggwsdownloadUrl" lay-verify="length|validateLoc" length="256" placeholder="" autocomplete="off" class="layui-input " style="width: 600px;" value="{{isundefined(d.ggwsdownloadUrl)}}">
+        </td>
+      </tr>
+	<tr>
+		<td colspan="2">居民显示方式：</td>
+        <td colspan="8">
+			<div class="layui-form-item">
+   	 			<div class="layui-input-block" style='display: table-cell;'>
+      				<select name="personSearchType" lay-verify="required">
+        				<option value="1" {{isSelected(d.personSearchType,"1")}}>区域</option>
+        				<option value="2" {{isSelected(d.personSearchType,"2")}}>机构</option>
+        				<option value="3" {{isSelected(d.personSearchType,"3")}}>团队</option>
+       					<option value="4" {{isSelected(d.personSearchType,"4")}}>医生</option>
+      				</select>
+    			</div>
+ 			 </div>
+		</td>
+    </tr>
+	<tr>
+        <td colspan="2">1、签约前是否需要公卫建档：<font color='red'>*</font></td>
+        <td colspan="8">
+          	<input type="radio" name="isggwshealth" value="Y" id="needJD" lay-verify="required|radio" text="签约前是否需要公卫建档" {{ischecked(d.isggwshealth,"Y")}} title="是">
+          	<input type="radio" name="isggwshealth" value="N" id="noNeedJD" lay-verify="required|radio" text="签约前是否需要公卫建档" {{ischecked(d.isggwshealth,"N")}} title="否">
+        </td>
+      </tr>
+	<tr>
+        <td colspan="2">居民档案是否由公卫系统创建：<font color='red'>*</font></td>
+        <td colspan="3">
+          	<input type="radio" name="isggwshealthFile" value="Y" id="needJDF" lay-verify="required|radio" text="居民档案是否由公卫系统创建" {{ischecked(d.isggwshealthFile,"Y")}} title="是">
+          	<input type="radio" name="isggwshealthFile" value="N" id="noNeedJDF" lay-verify="required|radio" text="居民档案是否由公卫系统创建" {{ischecked(d.isggwshealthFile,"N")}} title="否">
+        </td>
+		<td colspan="2">是否同步公卫数据：<font color='red'>*</font></td>
+        <td colspan="3">
+          	<input type="radio" name="isSyncGgwsData" value="Y" id="needSync" lay-verify="required|radio" text="是否同步公卫数据" {{ischecked(d.isSyncGgwsData,"Y")}} title="是">
+          	<input type="radio" name="isSyncGgwsData" value="N" id="noNeedSync" lay-verify="required|radio" text="是否同步公卫数据" {{ischecked(d.isSyncGgwsData,"N")}} title="否">
+        </td>
+     </tr>
+
+	<tr>
+	<tr>
+        <td colspan="2">2、是否能够跨辖区签约：<font color='red'>*</font></td>
+        <td colspan="8">
+          	<input type="radio" name="isareacontract" value="Y" lay-verify="required|radio" text="是否能够跨辖区签约" {{ischecked(d.isareacontract,"Y")}} title="是">
+          	<input type="radio" name="isareacontract" value="N" lay-verify="required|radio" text="是否能够跨辖区签约" {{ischecked(d.isareacontract,"N")}} title="否">
+        </td>
+      </tr>
+	<tr>
+        <td colspan="10">3、特色服务包是否需要专项档案才能进行签约：</td>
+    </tr>
+	<tr>
+        <td colspan="2">高血压专项：</td>
+        <td colspan="3">
+          	<input type="radio" name="ishyper" id="needIshyper" value="Y" lay-verify="required|radio" text="是" {{ischecked(d.ishyper,"Y")}} title="是">
+          	<input type="radio" name="ishyper" id="noNeedIshyper" value="N" lay-verify="required|radio" text="否" {{ischecked(d.ishyper,"N")}} title="否">
+        </td>
+        <td colspan="2">糖尿病专项：</td>
+        <td colspan="3">
+          	<input type="radio" name="isdiabetes" id="needIsdiabetes" value="Y" {{ischecked(d.isdiabetes,"Y")}} title="是">
+          	<input type="radio" name="isdiabetes" id="noNeedIsdiabetes" value="N" {{ischecked(d.isdiabetes,"N")}} title="否">
+        </td>
+      </tr>
+	<tr>
+        <td colspan="2">孕产妇专项：</td>
+        <td colspan="3">
+          	<input type="radio" name="iswoman" id="needIswoman" value="Y" {{ischecked(d.iswoman,"Y")}} title="是">
+          	<input type="radio" name="iswoman" id="noNeedIswoman" value="N" {{ischecked(d.iswoman,"N")}} title="否">
+        </td>
+        <td colspan="2">0-6岁儿童专项：</td>
+        <td colspan="3">
+          	<input type="radio" name="ischild" id="needIschild" value="Y" {{ischecked(d.ischild,"Y")}} title="是">
+          	<input type="radio" name="ischild" id="noNeedIschild" value="N" {{ischecked(d.ischild,"N")}} title="否">
+        </td>
+      </tr>
+	<tr>
+        <td colspan="2">老年人专项：</td>
+        <td colspan="3">
+          	<input type="radio" name="isold" id="needIsSold" value="Y" {{ischecked(d.isold,"Y")}} title="是">
+          	<input type="radio" name="isold" id="noNeedIsSold" value="N" {{ischecked(d.isold,"N")}} title="否">
+        </td>
+        <td colspan="2">肺结核专项：</td>
+        <td colspan="3">
+          	<input type="radio" name="ispulmonary" id="needIspulmonary" value="Y" {{ischecked(d.ispulmonary,"Y")}} title="是">
+          	<input type="radio" name="ispulmonary" id="noNeedIspulmonary"  value="N" {{ischecked(d.ispulmonary,"N")}} title="否">
+        </td>
+      </tr>
+	<tr>
+        <td colspan="2">严重精神病障碍专项：</td>
+        <td colspan="8">
+          	<input type="radio" name="ismind" id="needIsmind" value="Y" {{ischecked(d.ismind,"Y")}} title="是">
+          	<input type="radio" name="ismind" id="noNeedIsmind" value="N" {{ischecked(d.ismind,"N")}} title="否">
+        </td>
+      </tr>
+	<tr>
+        <td colspan="2">是否服务包及人员标签同步：</td>
+        <td colspan="8">
+          	<input type="radio" name="ispackperson" value="Y" {{ischecked(d.ispackperson,"Y")}} title="是">
+          	<input type="radio" name="ispackperson" value="N" {{ischecked(d.ispackperson,"N")}} title="否">
+        </td>
+      </tr>
+	<tr>
+        <td colspan="2">4、是否允许居民跨团队签约不同的服务包：</td>
+        <td colspan="8">
+          	<input type="radio" name="isinmate" value="Y" {{ischecked(d.isinmate,"Y")}} title="是">
+          	<input type="radio" name="isinmate" value="N" {{ischecked(d.isinmate,"N")}} title="否">
+        </td>
+      </tr>
+	<tr>
+        <td colspan="2">5、单人签约：</td>
+        <td colspan="8">
+          	<input type="radio" name="issolo" value="Y" {{ischecked(d.issolo,"Y")}} title="一个服务包对应一份协议">
+          	<input type="radio" name="issolo" value="N" {{ischecked(d.issolo,"N")}} title="多个服务包对应一份协议">
+        </td>
+    </tr>
+	<tr>
+        <td colspan="2">是否支持多次签约：</td>
+        <td colspan="3">
+          	<input type="radio" lay-verify="required|radio" text="是否支持多次签约" name="isMoreContract" value="Y" {{ischecked(d.isMoreContract,"Y")}} title="是">
+          	<input type="radio" lay-verify="required|radio" text="是否支持多次签约" name="isMoreContract" value="N" {{ischecked(d.isMoreContract,"N")}} title="否">
+        </td>
+        <td colspan="2">是否支持部分解约：</td>
+        <td colspan="3">
+          	<input type="radio" lay-verify="required|radio" text="是否支持部分解约" name="isPartialRescission" value="Y" {{ischecked(d.isPartialRescission,"Y")}} title="是">
+          	<input type="radio" lay-verify="required|radio" text="是否支持部分解约" name="isPartialRescission" value="N" {{ischecked(d.isPartialRescission,"N")}} title="否">
+        </td>
+    </tr>
+	<tr>
+        <td colspan="2">是否支持点单式签约：</td>
+        <td colspan="3">
+          	<input type="radio" lay-verify="required|radio" text="是否支持点单式签约" name="ispointSingleContract" value="Y" {{ischecked(d.ispointSingleContract,"Y")}} title="是">
+          	<input type="radio" lay-verify="required|radio" text="是否支持点单式签约" name="ispointSingleContract" value="N" {{ischecked(d.ispointSingleContract,"N")}} title="否">
+        </td>
+    </tr>
+	<tr>
+        <td colspan="1">6、是否支持家庭签约：</td>
+        <td colspan="2">
+          	<input type="radio" name="isfamily" value="Y" {{ischecked(d.isfamily,"Y")}} title="是">
+          	<input type="radio" name="isfamily" value="N" {{ischecked(d.isfamily,"N")}} title="否">
+        </td>
+        <td colspan="4">
+			<select name="isservicetype">
+              <option value="1" {{isSelected(d.isservicetype,"1")}}>单个服务包</option>
+              <option value="2" {{isSelected(d.isservicetype,"2")}}>多个服务包</option>
+            </select>
+        </td>
+        <td colspan="2">一份协议</td>
+      </tr>
+	<tr>
+        <td colspan="1">解约：</td>
+		<td colspan="2">主签人是否可解约所有协议：</td>
+        <td colspan="2">
+          	<input type="radio" name="issigning" value="Y" {{ischecked(d.issigning,"Y")}} title="是">
+          	<input type="radio" name="issigning" value="N" {{ischecked(d.issigning,"N")}} title="否">
+        </td>
+        <td colspan="2">被签约人是否可解约所有协议：</td>
+        <td colspan="2">
+          	<input type="radio" name="isbeisigning" value="Y" {{ischecked(d.isbeisigning,"Y")}} title="是">
+          	<input type="radio" name="isbeisigning" value="N" {{ischecked(d.isbeisigning,"N")}} title="否">
+        </td>
+      </tr>
+	<tr>
+        <td colspan="10">7、居民类型签约配置：</td>
+    </tr>
+
+	<tr>
+        <td colspan="1">户籍居民：</td>
+		<td colspan="2">免费服务包：</td>
+        <td colspan="2">
+          	<input type="radio" name="ishousehold"  value="Y" {{ischecked(d.ishousehold,"Y")}} title="是" lay-filter="ishouseholdFilter">
+          	<input type="radio" name="ishousehold" value="N" {{ischecked(d.ishousehold,"N")}} title="否" lay-filter="ishouseholdFilter">
+        </td>
+        <td colspan="2">免费服务包数量限制：</td>
+        <td colspan="2"><input id="hjmffwbsl" name="hjmffwbsl" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+   		    onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"  placeholder="" autocomplete="off" class="layui-input" style="width: 100px;" value="{{isundefined(d.hjmffwbsl)}}" >
+        </td>
+      </tr>
+	<tr>
+        <td colspan="1"></td>
+		<td colspan="2">付费服务包：</td>
+        <td colspan="2">
+          	<input type="radio" name="isresident" value="Y" {{ischecked(d.isresident,"Y")}} title="是" lay-filter="isresidentFilter">
+          	<input type="radio" name="isresident" value="N" {{ischecked(d.isresident,"N")}} title="否" lay-filter="isresidentFilter">
+        </td>
+        <td colspan="2">付费服务包数量限制：</td>
+        <td colspan="2"><input id="hjfffwbsl" name="hjfffwbsl" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+   		    onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"  placeholder="" autocomplete="off" class="layui-input" style="width: 100px;" value="{{isundefined(d.hjfffwbsl)}}" >
+        </td>
+      </tr>
+
+	<tr>
+        <td colspan="1">常驻居民：</td>
+		<td colspan="2">免费服务包：</td>
+        <td colspan="2">
+          	<input type="radio" name="ispay" value="Y" {{ischecked(d.ispay,"Y")}} title="是" lay-filter="ispayFilter">
+          	<input type="radio" name="ispay" value="N" {{ischecked(d.ispay,"N")}} title="否" lay-filter="ispayFilter">
+        </td>
+        <td colspan="2">免费服务包数量限制：</td>
+        <td colspan="2"><input id="czmffwbsl" name="czmffwbsl" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+   		    onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"   placeholder="" autocomplete="off" class="layui-input" style="width: 100px;" value="{{isundefined(d.czmffwbsl)}}" >
+        </td>
+      </tr>
+	<tr>
+        <td colspan="1"></td>
+		<td colspan="2">付费服务包：</td>
+        <td colspan="2">
+          	<input type="radio" name="isked" value="Y" {{ischecked(d.isked,"Y")}} title="是" lay-filter="iskedFilter">
+          	<input type="radio" name="isked" value="N" {{ischecked(d.isked,"N")}} title="否" lay-filter="iskedFilter">
+        </td>
+        <td colspan="2">付费服务包数量限制：</td>
+        <td colspan="2"><input id="czfffwbsl" name="czfffwbsl" onkeyup="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'')}else{this.value=this.value.replace(/\D/g,'')}"
+   		    onafterpaste="if(this.value.length==1){this.value=this.value.replace(/[^0-9]/g,'0')}else{this.value=this.value.replace(/\D/g,'')}"  placeholder="" autocomplete="off" class="layui-input" style="width: 100px;" value="{{isundefined(d.czfffwbsl)}}" >
+        </td>
+      </tr>
+	<tr>
+        <td colspan="10">8、导航项配置：</td>
+    </tr>
+	<tr>
+        <td colspan="2">导航页是否需要公共卫生模块：</td>
+        <td colspan="8">
+          	<input type="radio" name="isdhyggws" value="Y" {{ischecked(d.isdhyggws,"Y")}} title="是">
+          	<input type="radio" name="isdhyggws" value="N" {{ischecked(d.isdhyggws,"N")}} title="否">
+        </td>
+      </tr>
+	<tr>
+        <td colspan="2">公共卫生业务模块：</td>
+        <td colspan="8">
+<input type="checkbox" value="1" name="dhyggwsval" title="健康体检" lay-skin="primary" lay-filter="lockDemo" />
+<input type="checkbox" value="2" name="dhyggwsval" title="健康教育" lay-skin="primary" lay-filter="lockDemo" />
+<input type="checkbox" value="3" name="dhyggwsval" title="预防接种" lay-skin="primary" lay-filter="lockDemo" />
+<input type="checkbox" value="4" name="dhyggwsval" title="0~6岁儿童" lay-skin="primary" lay-filter="lockDemo" />
+<input type="checkbox" value="5" name="dhyggwsval" title="孕产妇" lay-skin="primary" lay-filter="lockDemo" />
+<input type="checkbox" value="6" name="dhyggwsval" title="老年人" lay-skin="primary" lay-filter="lockDemo" /><br/><br/>
+<input type="checkbox" value="7" name="dhyggwsval" title="高血压" lay-skin="primary" lay-filter="lockDemo" />
+<input type="checkbox" value="8" name="dhyggwsval" title="糖尿病" lay-skin="primary" lay-filter="lockDemo" />
+<input type="checkbox" value="9" name="dhyggwsval" title="严重精神障碍" lay-skin="primary" lay-filter="lockDemo" />
+<input type="checkbox" value="10" name="dhyggwsval" title="肺结核" lay-skin="primary" lay-filter="lockDemo" />
+<input type="checkbox" value="11" name="dhyggwsval" title="中医药" lay-skin="primary" lay-filter="lockDemo" />
+<input type="checkbox" value="12" name="dhyggwsval" title="传染病及突发公共卫生" lay-skin="primary" lay-filter="lockDemo" />
+<input type="checkbox" value="13" name="dhyggwsval" title="卫生计生监督" lay-skin="primary" lay-filter="lockDemo" />
+        </td>
+      </tr>
+
+
+	<tr>
+        <td colspan="10">9.移动端配置：</td>
+    </tr>
+	<tr>
+        <td colspan="2">服务标识：</td>
+        <td colspan="8"> <input type="text" name="phoneServerIdent" lay-verify="length|validateLoc" length="256" placeholder="" autocomplete="off" class="layui-input " style="width: 600px;" value="{{isundefined(d.phoneServerIdent)}}">
+        </td>
+    </tr>
+	<tr>
+        <td colspan="2">服务器地址：</td>
+        <td colspan="8"> <input type="text" name="phoneServerUrl" lay-verify="length|validateLoc" length="256" placeholder="" autocomplete="off" class="layui-input " style="width: 600px;" value="{{isundefined(d.phoneServerUrl)}}">
+        </td>
+    </tr>
+	<tr>
+        <td colspan="2">统计项：</td>
+        <td colspan="8">
+<input type="checkbox" value="1" name="staticsproject" title="目标签约人数" lay-skin="primary" lay-filter="phoneLockDemo" />
+<input type="checkbox" value="2" name="staticsproject" title="实际签约人数" lay-skin="primary" lay-filter="phoneLockDemo" />
+<input type="checkbox" value="4" name="staticsproject" title="实际签约率" lay-skin="primary" lay-filter="phoneLockDemo" />
+<input type="checkbox" value="3" name="staticsproject" title="履约人数" lay-skin="primary" lay-filter="phoneLockDemo" />
+<input type="checkbox" value="5" name="staticsproject" title="履约率" lay-skin="primary" lay-filter="phoneLockDemo" />
+        </td>
+      </tr>
+
+</tbody>
+</table>
+</div>
+</script>
+
+<style type="text/css">
+.bodytable {
+	background: #fff;
+	padding: 15px 15px;
+	min-height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+}
+
+.w800 {
+	width: 800px;
+	margin: 0px auto;
+}
+
+.tablehead {
+	padding: 9px 30px;
+	min-height: 30px;
+	line-height: 30px;
+	font-size: 14px;
+}
+
+.tablehead.e {
+	padding: 9px 15px;
+}
+
+.tablehead .title {
+	padding: 9px 15px;
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.tablehead b {
+	font-size: 16px;
+}
+
+.layui-table {
+	margin: 0px;
+}
+
+.hidetable {
+	position: relative;
+}
+
+.hidetable div {
+	height: 40px;
+	background: #fff;
+	margin-top: -28px;
+	position: absolute;
+	margin-left: -16px;
+	width: 101%;
+}
+
+.txtr {
+	text-align: right;
+}
+
+.txtc {
+	text-align: center;
+}
+
+.floatr {
+	float: right;
+}
+
+.ks-tb {
+	background: #fff;
+	padding: 9px 15px;
+	min-height: 20px;
+	line-height: 20px;
+	font-size: 14px;
+}
+
+.ks-tb .ks-l {
+	border: solid 1px #e6e6e6;
+}
+
+.mt15 {
+	margin-top: 15px;
+}
+
+.ml5 {
+	margin-left: 10px;
+}
+
+.w56 {
+	display: inline-block;
+	width: 56px;
+}
+
+.mt75 {
+	margin-top: 7.5px;
+}
+/* 表单 的layui修改*/
+.pr10 {
+	padding-right: 10px;
+}
+
+.layui-form-radio {
+	padding-right: 10px;
+	margin: 0px;
+	min-height: 19px;
+	line-height: 19px;
+	font-size: 14px;
+}
+
+.layui-form-radio>i {
+	margin-right: 3px;
+	font-size: 20px;
+}
+
+.layui-form-checkbox span {
+	padding-left: 3px;
+}
+
+.layui-form-checkbox[lay-skin=primary] span {
+	padding-right: 10px;
+}
+
+td label {
+	padding-right: 10px;
+}
+
+.layui-form-label {
+	padding: 0px;
+	width: auto;
+	line-height: 30px;
+}
+
+.layui-form-item {
+	margin-bottom: 0px;
+}
+
+.layui-input {
+	height: 30px;
+}
+
+.layui-input-block {
+	min-height: 30px;
+	margin-left: 40px;
+}
+
+.ml56 {
+	margin-left: 66px;
+}
+
+.mr5 {
+	margin-right: 5px;
+}
+
+.mr10 {
+	margin-right: 10px;
+}
+
+.mr15 {
+	margin-right: 15px;
+}
+
+.tdu {
+	display: inline-block;
+	min-width: 20px;
+	border-bottom: solid 1px #ccc;
+}
+
+.bbs1c {
+	border-bottom: solid 1px #ccc;
+}
+
+.mp15 {
+	margin: 0 -15px;
+	padding: 0 15px;
+}
+
+.fen {
+	text-align: center;
+	color: #FF5722;
+}
+</style>

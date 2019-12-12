@@ -1,0 +1,318 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ks.gpgp.user.server.repo.EmployeeMapper">
+  <resultMap id="BaseResultMap" type="com.ks.gpgp.user.client.entity.Employee">
+    <id column="FEMP_ID" jdbcType="VARCHAR" property="fempId" />
+    <result column="FEMP_CODE" jdbcType="VARCHAR" property="fempCode" />
+    <result column="FSTAFF_ID" jdbcType="VARCHAR" property="fstaffId" />
+    <result column="FEMP_NAME" jdbcType="VARCHAR" property="fempName" />
+    <result column="FORG_ID" jdbcType="VARCHAR" property="forgId" />
+    <result column="FID_NO" jdbcType="VARCHAR" property="fidNo" />
+    <result column="FSEX_ID" jdbcType="VARCHAR" property="fsexId" />
+    <result column="FDOC_TYPE" jdbcType="VARCHAR" property="fdocType" />
+    <result column="FBIRTHDATE" jdbcType="TIMESTAMP" property="fbirthdate" />
+    <result column="FISAVAILABLE" jdbcType="VARCHAR" property="fisavailable" />
+    <result column="FTELPHONE" jdbcType="VARCHAR" property="ftelphone" />
+    <result column="FFAX_NO" jdbcType="VARCHAR" property="ffaxNo" />
+    <result column="FEMAIL" jdbcType="VARCHAR" property="femail" />
+    <result column="FORDERNUM" jdbcType="DECIMAL" property="fordernum" />
+    <result column="FEMP_DESC" jdbcType="VARCHAR" property="fempDesc" />
+    <result column="FVERSION" jdbcType="INTEGER" property="fversion" />
+    <result column="FLOGCBY" jdbcType="VARCHAR" property="flogcby" />
+    <result column="FLOGCDATE" jdbcType="TIMESTAMP" property="flogcdate" />
+    <result column="FLOGLUBY" jdbcType="VARCHAR" property="flogluby" />
+    <result column="FLOGLUDATE" jdbcType="TIMESTAMP" property="flogludate" />
+    <result column="FLOGLABY" jdbcType="VARCHAR" property="floglaby" />
+    <result column="FLOGLADATE" jdbcType="TIMESTAMP" property="flogladate" />
+    <result column="FDOCKING_TIME" jdbcType="TIMESTAMP" property="fdockingTime" />
+    <result column="FIS_EXPERT" jdbcType="VARCHAR" property="fisExpert" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    FEMP_ID, FEMP_CODE, FSTAFF_ID, FEMP_NAME, FORG_ID, FID_NO, FSEX_ID, FDOC_TYPE, FBIRTHDATE, 
+    FISAVAILABLE, FTELPHONE, FFAX_NO, FEMAIL, FORDERNUM, FEMP_DESC, FVERSION, FLOGCBY, 
+    FLOGCDATE, FLOGLUBY, FLOGLUDATE, FLOGLABY, FLOGLADATE, FDOCKING_TIME, FIS_EXPERT
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from p_employee
+    where FEMP_ID = #{fempId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from p_employee
+    where FEMP_ID = #{fempId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.ks.gpgp.user.client.entity.Employee">
+    insert into p_employee (FEMP_ID, FEMP_CODE, FSTAFF_ID, 
+      FEMP_NAME, FORG_ID, FID_NO, 
+      FSEX_ID, FDOC_TYPE, FBIRTHDATE, 
+      FISAVAILABLE, FTELPHONE, FFAX_NO, 
+      FEMAIL, FORDERNUM, FEMP_DESC, 
+      FVERSION, FLOGCBY, FLOGCDATE, 
+      FLOGLUBY, FLOGLUDATE, FLOGLABY, 
+      FLOGLADATE, FDOCKING_TIME, FIS_EXPERT
+      )
+    values (#{fempId,jdbcType=VARCHAR}, #{fempCode,jdbcType=VARCHAR}, #{fstaffId,jdbcType=VARCHAR}, 
+      #{fempName,jdbcType=VARCHAR}, #{forgId,jdbcType=VARCHAR}, #{fidNo,jdbcType=VARCHAR}, 
+      #{fsexId,jdbcType=VARCHAR}, #{fdocType,jdbcType=VARCHAR}, #{fbirthdate,jdbcType=TIMESTAMP}, 
+      #{fisavailable,jdbcType=VARCHAR}, #{ftelphone,jdbcType=VARCHAR}, #{ffaxNo,jdbcType=VARCHAR}, 
+      #{femail,jdbcType=VARCHAR}, #{fordernum,jdbcType=DECIMAL}, #{fempDesc,jdbcType=VARCHAR}, 
+      #{fversion,jdbcType=INTEGER}, #{flogcby,jdbcType=VARCHAR}, #{flogcdate,jdbcType=TIMESTAMP}, 
+      #{flogluby,jdbcType=VARCHAR}, #{flogludate,jdbcType=TIMESTAMP}, #{floglaby,jdbcType=VARCHAR}, 
+      #{flogladate,jdbcType=TIMESTAMP}, #{fdockingTime,jdbcType=TIMESTAMP}, #{fisExpert,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.ks.gpgp.user.client.entity.Employee">
+    insert into p_employee
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fempId != null">
+        FEMP_ID,
+      </if>
+      <if test="fempCode != null">
+        FEMP_CODE,
+      </if>
+      <if test="fstaffId != null">
+        FSTAFF_ID,
+      </if>
+      <if test="fempName != null">
+        FEMP_NAME,
+      </if>
+      <if test="forgId != null">
+        FORG_ID,
+      </if>
+      <if test="fidNo != null">
+        FID_NO,
+      </if>
+      <if test="fsexId != null">
+        FSEX_ID,
+      </if>
+      <if test="fdocType != null">
+        FDOC_TYPE,
+      </if>
+      <if test="fbirthdate != null">
+        FBIRTHDATE,
+      </if>
+      <if test="fisavailable != null">
+        FISAVAILABLE,
+      </if>
+      <if test="ftelphone != null">
+        FTELPHONE,
+      </if>
+      <if test="ffaxNo != null">
+        FFAX_NO,
+      </if>
+      <if test="femail != null">
+        FEMAIL,
+      </if>
+      <if test="fordernum != null">
+        FORDERNUM,
+      </if>
+      <if test="fempDesc != null">
+        FEMP_DESC,
+      </if>
+      <if test="fversion != null">
+        FVERSION,
+      </if>
+      <if test="flogcby != null">
+        FLOGCBY,
+      </if>
+      <if test="flogcdate != null">
+        FLOGCDATE,
+      </if>
+      <if test="flogluby != null">
+        FLOGLUBY,
+      </if>
+      <if test="flogludate != null">
+        FLOGLUDATE,
+      </if>
+      <if test="floglaby != null">
+        FLOGLABY,
+      </if>
+      <if test="flogladate != null">
+        FLOGLADATE,
+      </if>
+      <if test="fdockingTime != null">
+        FDOCKING_TIME,
+      </if>
+      <if test="fisExpert != null">
+        FIS_EXPERT,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fempId != null">
+        #{fempId,jdbcType=VARCHAR},
+      </if>
+      <if test="fempCode != null">
+        #{fempCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fstaffId != null">
+        #{fstaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="fempName != null">
+        #{fempName,jdbcType=VARCHAR},
+      </if>
+      <if test="forgId != null">
+        #{forgId,jdbcType=VARCHAR},
+      </if>
+      <if test="fidNo != null">
+        #{fidNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fsexId != null">
+        #{fsexId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdocType != null">
+        #{fdocType,jdbcType=VARCHAR},
+      </if>
+      <if test="fbirthdate != null">
+        #{fbirthdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fisavailable != null">
+        #{fisavailable,jdbcType=VARCHAR},
+      </if>
+      <if test="ftelphone != null">
+        #{ftelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="ffaxNo != null">
+        #{ffaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="femail != null">
+        #{femail,jdbcType=VARCHAR},
+      </if>
+      <if test="fordernum != null">
+        #{fordernum,jdbcType=DECIMAL},
+      </if>
+      <if test="fempDesc != null">
+        #{fempDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fversion != null">
+        #{fversion,jdbcType=INTEGER},
+      </if>
+      <if test="flogcby != null">
+        #{flogcby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogcdate != null">
+        #{flogcdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flogluby != null">
+        #{flogluby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogludate != null">
+        #{flogludate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="floglaby != null">
+        #{floglaby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogladate != null">
+        #{flogladate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdockingTime != null">
+        #{fdockingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fisExpert != null">
+        #{fisExpert,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.ks.gpgp.user.client.entity.Employee">
+    update p_employee
+    <set>
+      <if test="fempCode != null">
+        FEMP_CODE = #{fempCode,jdbcType=VARCHAR},
+      </if>
+      <if test="fstaffId != null">
+        FSTAFF_ID = #{fstaffId,jdbcType=VARCHAR},
+      </if>
+      <if test="fempName != null">
+        FEMP_NAME = #{fempName,jdbcType=VARCHAR},
+      </if>
+      <if test="forgId != null">
+        FORG_ID = #{forgId,jdbcType=VARCHAR},
+      </if>
+      <if test="fidNo != null">
+        FID_NO = #{fidNo,jdbcType=VARCHAR},
+      </if>
+      <if test="fsexId != null">
+        FSEX_ID = #{fsexId,jdbcType=VARCHAR},
+      </if>
+      <if test="fdocType != null">
+        FDOC_TYPE = #{fdocType,jdbcType=VARCHAR},
+      </if>
+      <if test="fbirthdate != null">
+        FBIRTHDATE = #{fbirthdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fisavailable != null">
+        FISAVAILABLE = #{fisavailable,jdbcType=VARCHAR},
+      </if>
+      <if test="ftelphone != null">
+        FTELPHONE = #{ftelphone,jdbcType=VARCHAR},
+      </if>
+      <if test="ffaxNo != null">
+        FFAX_NO = #{ffaxNo,jdbcType=VARCHAR},
+      </if>
+      <if test="femail != null">
+        FEMAIL = #{femail,jdbcType=VARCHAR},
+      </if>
+      <if test="fordernum != null">
+        FORDERNUM = #{fordernum,jdbcType=DECIMAL},
+      </if>
+      <if test="fempDesc != null">
+        FEMP_DESC = #{fempDesc,jdbcType=VARCHAR},
+      </if>
+      <if test="fversion != null">
+        FVERSION = #{fversion,jdbcType=INTEGER},
+      </if>
+      <if test="flogcby != null">
+        FLOGCBY = #{flogcby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogcdate != null">
+        FLOGCDATE = #{flogcdate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="flogluby != null">
+        FLOGLUBY = #{flogluby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogludate != null">
+        FLOGLUDATE = #{flogludate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="floglaby != null">
+        FLOGLABY = #{floglaby,jdbcType=VARCHAR},
+      </if>
+      <if test="flogladate != null">
+        FLOGLADATE = #{flogladate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fdockingTime != null">
+        FDOCKING_TIME = #{fdockingTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="fisExpert != null">
+        FIS_EXPERT = #{fisExpert,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where FEMP_ID = #{fempId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.ks.gpgp.user.client.entity.Employee">
+    update p_employee
+    set FEMP_CODE = #{fempCode,jdbcType=VARCHAR},
+      FSTAFF_ID = #{fstaffId,jdbcType=VARCHAR},
+      FEMP_NAME = #{fempName,jdbcType=VARCHAR},
+      FORG_ID = #{forgId,jdbcType=VARCHAR},
+      FID_NO = #{fidNo,jdbcType=VARCHAR},
+      FSEX_ID = #{fsexId,jdbcType=VARCHAR},
+      FDOC_TYPE = #{fdocType,jdbcType=VARCHAR},
+      FBIRTHDATE = #{fbirthdate,jdbcType=TIMESTAMP},
+      FISAVAILABLE = #{fisavailable,jdbcType=VARCHAR},
+      FTELPHONE = #{ftelphone,jdbcType=VARCHAR},
+      FFAX_NO = #{ffaxNo,jdbcType=VARCHAR},
+      FEMAIL = #{femail,jdbcType=VARCHAR},
+      FORDERNUM = #{fordernum,jdbcType=DECIMAL},
+      FEMP_DESC = #{fempDesc,jdbcType=VARCHAR},
+      FVERSION = #{fversion,jdbcType=INTEGER},
+      FLOGCBY = #{flogcby,jdbcType=VARCHAR},
+      FLOGCDATE = #{flogcdate,jdbcType=TIMESTAMP},
+      FLOGLUBY = #{flogluby,jdbcType=VARCHAR},
+      FLOGLUDATE = #{flogludate,jdbcType=TIMESTAMP},
+      FLOGLABY = #{floglaby,jdbcType=VARCHAR},
+      FLOGLADATE = #{flogladate,jdbcType=TIMESTAMP},
+      FDOCKING_TIME = #{fdockingTime,jdbcType=TIMESTAMP},
+      FIS_EXPERT = #{fisExpert,jdbcType=VARCHAR}
+    where FEMP_ID = #{fempId,jdbcType=VARCHAR}
+  </update>
+</mapper>

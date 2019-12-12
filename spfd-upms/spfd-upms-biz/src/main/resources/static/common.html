@@ -1,0 +1,64 @@
+<head>  
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">  
+    <meta http-equiv="X-Frame-Options" content="SAMEORIGIN / DENY ">  
+    <title> X-Frame-Options </title>  
+  <meta charset="utf-8">
+  <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <link rel="stylesheet" href="/layuiadmin/layui/css/layui.css" media="all">
+  <link rel="stylesheet" href="/layuiadmin/style/admin.css" media="all">
+<style type="text/css">
+  .txt{
+    font-size: 14px;
+  }
+  /*.layui-side-menu .layui-nav{*/
+    /*margin-top: 180px;*/
+  /*}*/
+  .layui-layout-admin .layui-logo{
+    /*height: 180px;*/
+    /*font-size: 14px;*/
+    line-height: 30px;
+    text-align: left;
+    padding-left: 25px;
+    padding-top: 15px;
+  }
+</style>
+</head>
+
+<script src="/js/jquery.min.js"></script>
+<script src="/layuiadmin/layui/layui.js"></script>
+<script>
+     layui.config({
+      base: '/layuiadmin/' //静态资源所在路径
+    }).extend({
+      index: 'lib/index',
+      selectN: '../layui_extends/selectN',
+      selectM: '../layui_extends/selectM',
+      dtree: 'layui_extends/dtree'
+    }).use(['index','dtree','selectN','selectM'],function(){
+        var $=layui.$,layer=layui.layer;
+        var htm = GetQueryString('htm')
+        if (htm) {
+          clickhtm(htm)
+        }
+        setTimeout(function() {
+        }, 100);
+    }); 
+
+    // 获取url指定参数值
+    function GetQueryString(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) return unescape(r[2]); return null;
+    }
+
+    function clickhtm(htm){
+      var $=layui.$;
+      $("li a").each(function(){
+        var str = $(this).attr('lay-href'); //click
+        if (str == htm) {
+          $(this).click()
+        }
+      })
+    }
+  </script>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ks.spfd.admin.mapper.SysEmployeeRelationMapper">
+
+  <resultMap id="sysEmployeeRelationMap" type="com.ks.spfd.admin.api.entity.SysEmployeeRelation">
+                  <id property="id" column="id"/>
+                        <result property="orgId" column="org_id"/>
+                        <result property="deptId" column="dept_id"/>
+                        <result property="empId" column="emp_id"/>
+            </resultMap>
+
+  <!--sysEmployeeRelation简单分页查询-->
+  <select id="getSysEmployeeRelationPage" resultMap="sysEmployeeRelationMap">
+    SELECT
+                  id,
+                        org_id,
+                        dept_id,
+                        emp_id
+              FROM sys_employee_relation
+    <where>
+              <if test="sysEmployeeRelation.id != null and sysEmployeeRelation.id.trim() != ''">
+          AND id = #{sysEmployeeRelation.id}
+        </if>
+              <if test="sysEmployeeRelation.orgId != null and sysEmployeeRelation.orgId.trim() != ''">
+          AND org_id = #{sysEmployeeRelation.orgId}
+        </if>
+              <if test="sysEmployeeRelation.deptId != null and sysEmployeeRelation.deptId.trim() != ''">
+          AND dept_id = #{sysEmployeeRelation.deptId}
+        </if>
+              <if test="sysEmployeeRelation.empId != null and sysEmployeeRelation.empId.trim() != ''">
+          AND emp_id = #{sysEmployeeRelation.empId}
+        </if>
+          </where>
+  </select>
+
+
+
+</mapper>
