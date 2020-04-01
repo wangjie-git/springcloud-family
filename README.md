@@ -7,12 +7,6 @@
 - 提供 lambda 、stream api 、webflux 的生产实践   
 
 
-<a href="https://pig4cloud.com/#/doc/pig" target="_blank">部署文档</a> | <a target="_blank" href="https://avue.top"> 前端解决方案</a> | <a target="_blank" href="https://gitee.com/log4j/pig/releases/v1.3.2"> 1.0  版本</a> | <a target="_blank" href="http://pigx.pig4cloud.com"> PigX在线体验</a>
-    
-
-
-   
-![](http://a.pigx.top/20190201162417.png?imageView2/2/w/650)   
 
 #### 核心依赖 
 
