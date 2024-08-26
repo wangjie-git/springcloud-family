@@ -40,7 +40,7 @@
 		<jasypt.version>2.1.0</jasypt.version>
 		<security.oauth.version>2.3.3.RELEASE</security.oauth.version>
 		<jackson.modules>2.9.8</jackson.modules>
-        <swagger.version>2.9.2</swagger.version>
+        <swagger.version>2.10.0</swagger.version>
 		<!--zipkin2.12.x需要此版本jooq-->
 		<jooq.version>3.11.9</jooq.version>
 		<zipkin.version>2.12.2</zipkin.version>
